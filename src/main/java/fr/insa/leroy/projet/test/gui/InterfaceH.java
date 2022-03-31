@@ -18,5 +18,6 @@ public class InterfaceH extends HBox {
         this.GrosBoutonLeon = new Button("Léon");
         GrosBoutonLeon.setPrefHeight(50);
         this.getChildren().addAll(this.GrosBoutonLeon);
+        // coucou les loulous
     }
 }
