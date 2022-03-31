@@ -16,15 +16,14 @@ import javafx.scene.layout.VBox;
 public class InterfaceL extends VBox {
     
   private ToggleButton bNouveau;
-  private RadioButton blike;
+  private ToggleButton blike;
   private ChoiceBox menuderoule;  
     
     public InterfaceL()
             {
-    this.bNouveau = new ToggleButton("Allan");  
-    this.blike = new RadioButton("Ana");
-    //ChoiceBox<String> menuderoule = new ChoiceBox<>();
-    //this.menuderoule.getItems().addAll("Noeud","Ana","Léon");
+    this.bNouveau = new ToggleButton("Noeud");  
+    this.blike = new ToggleButton("Barre");
+    
     
     this.getChildren().addAll(this.bNouveau, this.blike);
 }

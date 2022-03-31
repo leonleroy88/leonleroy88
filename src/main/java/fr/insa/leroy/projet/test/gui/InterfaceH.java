@@ -14,10 +14,23 @@ import javafx.scene.layout.HBox;
 public class InterfaceH extends HBox {
     
     private Button GrosBoutonLeon;
+    private Button supprime;
+    private Button zoom;
+    
+    
     public InterfaceH(){
         this.GrosBoutonLeon = new Button("Léon");
-        GrosBoutonLeon.setPrefHeight(50);
-        this.getChildren().addAll(this.GrosBoutonLeon);
+        //GrosBoutonLeon.setPrefHeight(50);
+        this.supprime = new Button("Supprimer");
+        this.zoom = new Button("Zoom");
+        
+        this.setSpacing(10);
+        
+        
+        
+        
+        
+        this.getChildren().addAll(this.GrosBoutonLeon, this.supprime,this.zoom);
         // coucou les loulous
     }
 }
