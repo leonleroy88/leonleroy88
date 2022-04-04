@@ -23,7 +23,6 @@ public class InterfaceH extends HBox {
         //GrosBoutonLeon.setPrefHeight(50);
         this.supprime = new Button("Supprimer");
         this.zoom = new Button("Zoom");
-        
         this.setSpacing(10);
         
         
