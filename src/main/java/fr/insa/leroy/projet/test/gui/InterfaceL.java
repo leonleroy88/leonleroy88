@@ -23,7 +23,7 @@ public class InterfaceL extends VBox {
             {
     this.bNouveau = new ToggleButton("Noeud");  
     this.blike = new ToggleButton("Barre");
-    this.setSpacing(10);
+   // this.setSpacing(10);
     
     this.getChildren().addAll(this.bNouveau, this.blike);
 }
