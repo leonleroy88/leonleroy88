@@ -34,25 +34,29 @@ public abstract class Noeud {
         this.force=V;      
     }
    
-    public static Noeud entreeNoeud (double PX, double PY, Vecteur2D fce){
+    public static Noeud entreeNoeud (int ID, double PX, double PY, Vecteur2D V){
        double fx,fy;
        int type;
        System.out.println("Quel type de Noeud ? 0 noeud simple / 1 pour appui simple / 2 pour appui double");
        type = Lire.i();
-       if (type == 0){
-          // new NoeudAppuiSimple
-       }
-       
-       
-       System.out.println("Entre les coordonnées en x et y du noeud");
+        System.out.println("Entre les coordonnées en x et y du noeud");
        PX = Lire.d();
        PY = Lire.d();
        System.out.println("Entrre les coordonnées du vecteur force");
        fx = Lire.d();
        fy = Lire.d();
-       fce = new Vecteur2D(fx , fy);
+       V = new Vecteur2D(fx , fy);
        
-       Noeud n = new Noeud(PX , PY , fce) {};
+       if (type == 0){
+       NoeudSimple R = new NoeudSimple(ID,PX,PY,V);
+       }
+       if (type==1){
+       NoeudAppuiSimple R = new NoeudAppuiSimple(PX,PY,V);
+       }
+       if (type==2){
+       NoeudAppuiDouble R = new NoeudAppuiDouble(PX,PY,V);
+       }
+       Noeud n = new Noeud(PX , PY , V) {};
        return(n);
        
     }

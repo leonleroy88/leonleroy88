@@ -4,9 +4,8 @@
  */
 package fr.insa.leroy.projet.test.gui;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.VBox;
 
 /**
@@ -15,16 +14,26 @@ import javafx.scene.layout.VBox;
  */
 public class InterfaceL extends VBox {
     
-  private ToggleButton bNouveau;
-  private ToggleButton blike;
+  private Button bNouveau;
+  private Button bBarre;
   private ChoiceBox menuderoule;  
     
     public InterfaceL()
             {
-    this.bNouveau = new ToggleButton("Noeud");  
-    this.blike = new ToggleButton("Barre");
+    this.bNouveau = new Button("Noeud"); 
+    this.bNouveau.setOnAction((t) -> {
+        System.out.println("Bouton Noeud");
+    });
+    
+    this.bBarre = new Button("Barre");
+    this.bBarre.setOnAction((t) -> {
+       System.out.println("Barre");
+        
+    });
+   
+    
    // this.setSpacing(10);
     
-    this.getChildren().addAll(this.bNouveau, this.blike);
+    this.getChildren().addAll(this.bNouveau, this.bBarre);
 }
 }
