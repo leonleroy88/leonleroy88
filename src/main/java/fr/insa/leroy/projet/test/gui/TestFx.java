@@ -15,7 +15,7 @@ public void start(Stage primaryStage) throws Exception {
   
     
 primaryStage.setTitle("Projet");
-Scene scene = new Scene(new MainPanel());
+Scene scene = new Scene(new MainPanel(),700,600);
 primaryStage.setScene(scene);
 primaryStage.show();
     

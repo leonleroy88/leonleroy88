@@ -14,7 +14,7 @@ import javafx.scene.layout.BorderPane;
 public class MainPanel extends BorderPane {
     
     
-    private DessinCanevas1 cDessin;
+    private DessinCanvas cDessin;
     private InterfaceH outilsTop;
     private InterfaceL outilsLeft;
     //private Dessin dessin;
@@ -28,7 +28,7 @@ public class MainPanel extends BorderPane {
         this.setLeft(this.outilsLeft);
        // this.setCenter(this.dessin);
        
-       this.cDessin = new DessinCanevas1(200,200);
+       this.cDessin = new DessinCanvas();
        this.setCenter(this.cDessin);
        
        
