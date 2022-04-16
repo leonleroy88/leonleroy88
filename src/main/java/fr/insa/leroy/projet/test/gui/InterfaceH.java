@@ -15,21 +15,23 @@ public class InterfaceH extends HBox {
     
     private Button GrosBoutonLeon;
     private Button supprime;
-    private Button zoom;
+    private Button aide;
     
     
     public InterfaceH(){
         this.GrosBoutonLeon = new Button("Léon");
-        //GrosBoutonLeon.setPrefHeight(50);
         this.supprime = new Button("Supprimer");
-        this.zoom = new Button("Zoom");
+        this.aide = new Button("Aide");
+        
+        
+        
         this.setSpacing(10);
         
         
         
         
         
-        this.getChildren().addAll(this.GrosBoutonLeon, this.supprime,this.zoom);
+        this.getChildren().addAll(this.GrosBoutonLeon, this.supprime,this.aide);
         // coucou les loulous
     }
 }
