@@ -11,6 +11,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
 /**
  *
@@ -22,6 +23,7 @@ public class InterfaceL extends VBox {
   private Button bBarre;
   private ChoiceBox menuderoule;  
   private Text texte;
+  private Stage stage;
     
     public InterfaceL()
             {
@@ -32,7 +34,8 @@ public class InterfaceL extends VBox {
     
     this.bBarre = new Button("Barre");
     this.bBarre.setOnAction((t) -> {
-       System.out.println("Barre");
+      stage.setTitle("Création graphique du treillis");
+      //window.setCenter(this.);
         
     });
         this.texte = new Text("Ana & Allan & Léon");
