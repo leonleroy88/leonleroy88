@@ -14,7 +14,7 @@ public class TestFx extends Application {
 public void start(Stage primaryStage) throws Exception {
   
     
-primaryStage.setTitle("Projet");
+primaryStage.setTitle("Projet - Treillis");
 Scene scene = new Scene(new MainPanel(),700,600);
 primaryStage.setScene(scene);
 primaryStage.show();

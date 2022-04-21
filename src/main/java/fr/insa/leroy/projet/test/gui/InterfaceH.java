@@ -4,10 +4,11 @@
  */
 package fr.insa.leroy.projet.test.gui;
 
+import static java.awt.SystemColor.window;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 
 /**
@@ -16,16 +17,20 @@ import javafx.scene.layout.HBox;
  */
 public class InterfaceH extends HBox {
     
-    private Button GrosBoutonLeon;
+    private Button fichier;
     private Button supprime;
     private Menu aide;
     private Button help;
     
     
     public InterfaceH(){
-        this.GrosBoutonLeon = new Button("Léon");
+        this.fichier = new Button("Fichier");
         this.supprime = new Button("Supprimer");
-        this.aide = new Menu("Aide");
+        
+        this.fichier.setOnAction((t) -> {
+         //stage.setTitle("Création graphique du treillis");
+         //window.setCenter(this.aide);
+        });
        
         this.help = new Button("A propos");
         this.help.setOnAction((t) -> {
@@ -35,13 +40,16 @@ public class InterfaceH extends HBox {
             alert.setContentText("Projet réalisé par Ana & Allan & Léon ");
             alert.showAndWait();
         });
-        
+        ChoiceBox<String> cbxLang = new ChoiceBox<String>();
+        cbxLang.getItems().addAll("Deutsch", "English", "Français", "VIVALESPAGNA");
+        cbxLang.getSelectionModel().select(3); 
+        this.getChildren().add(cbxLang);
         
         //this.aide.getItems().add(help);
         
-        this.setSpacing(10);
+        this.setSpacing(5);
         
-        this.getChildren().addAll(this.GrosBoutonLeon, this.supprime,this.help);
+        this.getChildren().addAll(this.fichier, this.supprime,this.help);
         
         // coucou les loulous
     }

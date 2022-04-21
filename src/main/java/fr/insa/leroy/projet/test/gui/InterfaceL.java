@@ -6,6 +6,7 @@ package fr.insa.leroy.projet.test.gui;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Spinner;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -29,22 +30,21 @@ public class InterfaceL extends VBox {
             {
     this.bNouveau = new Button("Noeud"); 
     this.bNouveau.setOnAction((t) -> {
-        System.out.println("Bouton Noeud");
+        System.out.println("Noeud");
     });
     
     this.bBarre = new Button("Barre");
     this.bBarre.setOnAction((t) -> {
-      stage.setTitle("Création graphique du treillis");
+        System.out.println("Barre");
       //window.setCenter(this.);
         
     });
-        this.texte = new Text("Ana & Allan & Léon");
+    this.texte = new Text("Ana & Allan & Léon");
         texte.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
         texte.setTextAlignment(TextAlignment.CENTER);
-   
+        
+ 
     
-   // this.setSpacing(10);
-    
-    this.getChildren().addAll(this.bNouveau, this.bBarre,this.texte);
+    this.getChildren().addAll(this.bNouveau, this.bBarre);
 }
 }
