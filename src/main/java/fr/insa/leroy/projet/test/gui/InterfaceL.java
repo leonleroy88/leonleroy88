@@ -6,7 +6,6 @@ package fr.insa.leroy.projet.test.gui;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Spinner;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -25,9 +24,12 @@ public class InterfaceL extends VBox {
   private ChoiceBox menuderoule;  
   private Text texte;
   private Stage stage;
+  private Button commencer;
     
     public InterfaceL()
             {
+    
+                
     this.bNouveau = new Button("Noeud"); 
     this.bNouveau.setOnAction((t) -> {
         System.out.println("Noeud");
@@ -43,8 +45,11 @@ public class InterfaceL extends VBox {
         texte.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
         texte.setTextAlignment(TextAlignment.CENTER);
         
- 
+ this.commencer = new Button("Commencer");
+ this.commencer.setOnAction((t) -> {
+     stage.setTitle("Nouvelle page");
+ });
     
-    this.getChildren().addAll(this.bNouveau, this.bBarre);
+    this.getChildren().addAll(this.bNouveau, this.bBarre,this.commencer);
 }
 }

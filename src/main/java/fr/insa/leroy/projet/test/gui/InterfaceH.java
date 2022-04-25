@@ -4,11 +4,10 @@
  */
 package fr.insa.leroy.projet.test.gui;
 
-import static java.awt.SystemColor.window;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 
 /**
@@ -17,14 +16,25 @@ import javafx.scene.layout.HBox;
  */
 public class InterfaceH extends HBox {
     
-    private Button fichier;
+    private Menu fichier;
     private Button supprime;
     private Menu aide;
     private Button help;
+    private MenuItem sauvegarder, ouvrir, nouveau;
     
     
     public InterfaceH(){
-        this.fichier = new Button("Fichier");
+        this.fichier = new Menu("Fichier");
+        this.sauvegarder = new MenuItem("Enregistrer");
+        this.ouvrir = new MenuItem("Ouvrir");
+        this.nouveau = new MenuItem("Nouveau");
+       // this.getChildren().add(this.fichier);
+        
+        
+        fichier.getItems().add(sauvegarder);
+        fichier.getItems().add(ouvrir);
+        fichier.getItems().add(nouveau);
+        
         this.supprime = new Button("Supprimer");
         
         this.fichier.setOnAction((t) -> {
@@ -40,16 +50,11 @@ public class InterfaceH extends HBox {
             alert.setContentText("Projet réalisé par Ana & Allan & Léon ");
             alert.showAndWait();
         });
-        ChoiceBox<String> cbxLang = new ChoiceBox<String>();
-        cbxLang.getItems().addAll("Deutsch", "English", "Français", "VIVALESPAGNA");
-        cbxLang.getSelectionModel().select(3); 
-        this.getChildren().add(cbxLang);
+       
         
-        //this.aide.getItems().add(help);
+        this.setSpacing(15);
         
-        this.setSpacing(5);
-        
-        this.getChildren().addAll(this.fichier, this.supprime,this.help);
+        this.getChildren().addAll(this.supprime,this.help);
         
         // coucou les loulous
     }

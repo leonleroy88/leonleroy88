@@ -31,7 +31,7 @@ public class DessinCanvas extends Pane {
     }
     public void redrawAll(){
     GraphicsContext context = this.realCanvas.getGraphicsContext2D();
-    context.setFill(Color.CYAN);
+    context.setFill(Color.BEIGE);
     context.fillRect(0, 0, this.realCanvas.getWidth(), this.realCanvas.getHeight());
     }
 }

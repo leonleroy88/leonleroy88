@@ -17,16 +17,20 @@ public class MainPanel extends BorderPane {
     private DessinCanvas cDessin;
     private InterfaceH outilsTop;
     private InterfaceL outilsLeft;
+    private Centre centre;
     //private Dessin dessin;
     
     public MainPanel() {
         this.outilsTop = new InterfaceH();
         this.outilsLeft = new InterfaceL();
+        this.centre = new Centre();
        // this.dessin = new Dessin(this);
         
         this.setTop(this.outilsTop);
         this.setLeft(this.outilsLeft);
        // this.setCenter(this.dessin);
+       
+       this.setCenter(this.centre);
        
        this.cDessin = new DessinCanvas();
        this.setCenter(this.cDessin);
