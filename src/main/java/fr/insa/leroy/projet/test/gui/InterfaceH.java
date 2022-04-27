@@ -10,6 +10,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -54,7 +55,7 @@ public class InterfaceH extends HBox {
         });
 
         this.setSpacing(15);
-
+        FxUtils.setSimpleBorder(this, Color.RED, 2);
         this.getChildren().addAll(this.supprime, this.help);
 
         // coucou les loulous

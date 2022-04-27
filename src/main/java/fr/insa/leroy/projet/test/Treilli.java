@@ -29,7 +29,7 @@ public class Treilli {
         Treilli res;
         res = new Treilli();
         NoeudAppuiDouble n1 = new NoeudAppuiDouble(0, 200, new Vecteur2D(0, 0));
-        NoeudSimple n2 = new NoeudSimple(2, 100, 100, new Vecteur2D(0, -1000));
+        NoeudSimple n2 = new NoeudSimple(100, 100, new Vecteur2D(0, -1000));
         NoeudAppuiSimple n3 = new NoeudAppuiSimple(0, 0, new Vecteur2D(0, 0));
         res.ajouteNoeud(n1);
         res.ajouteNoeud(n2);

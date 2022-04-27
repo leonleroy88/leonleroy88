@@ -4,6 +4,8 @@
  */
 package fr.insa.leroy.projet.test;
 
+import javafx.scene.Group;
+
 /**
  *
  * @author Elève
@@ -21,6 +23,7 @@ public class NoeudAppuiDouble extends NoeudAppui {
        return "Noeud Appui Double : [id : "+this.id +" px:"+this.px+" py:"+this.py+" force:"+this.force.toString() ;
     
     }     
-  
+
+      
     
 }

@@ -51,7 +51,7 @@ public abstract class Noeud {
        V = new Vecteur2D(fx , fy);
        
        if (type == 0){
-       NoeudSimple R = new NoeudSimple(ID,PX,PY,V);
+       NoeudSimple R = new NoeudSimple(PX,PY,V);
        }
        if (type==1){
        NoeudAppuiSimple R = new NoeudAppuiSimple(PX,PY,V);
@@ -59,20 +59,17 @@ public abstract class Noeud {
        if (type==2){
        NoeudAppuiDouble R = new NoeudAppuiDouble(PX,PY,V);
        }
-       Noeud n = new Noeud(PX , PY , V) {};
+       Noeud n = new Noeud(PX , PY , V){};  
        return(n);
-       
-    }
-        
-          
-     
-   
+               
+       }   
     
     @Override
      public String toString(){
        return "Ton point : [id : "+this.id +" px:"+this.px+" py:"+this.py+" force:"+this.force.toString() ;
     
     } 
+       
     
     
     
@@ -103,7 +100,7 @@ public abstract class Noeud {
         this.py=pY;
     }
    
-    }
     
-   
-
+    
+}
+               

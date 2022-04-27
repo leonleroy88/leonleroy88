@@ -4,6 +4,8 @@
  */
 package fr.insa.leroy.projet.test;
 
+import javafx.scene.Group;
+
 /**
  *
  * @author Elève
@@ -20,5 +22,7 @@ public class  NoeudAppuiSimple extends NoeudAppui {
        return "Noeud Appui simple : [id : "+this.id +"Ppx:"+this.px+" py:"+this.py+" force:"+this.force.toString() ;
     
     }     
+
+
     
 }
