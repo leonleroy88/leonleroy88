@@ -4,6 +4,9 @@
  */
 package fr.insa.leroy.projet.test;
 
+import javafx.scene.Group;
+import javafx.scene.shape.Ellipse;
+
 /**
  *
  * @author Elève
@@ -99,7 +102,8 @@ public abstract class Noeud {
         double pY=Lire.d();
         this.py=pY;
     }
-    
+   
+    }
     
    
-}
+

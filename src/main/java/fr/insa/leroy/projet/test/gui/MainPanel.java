@@ -4,7 +4,8 @@
  */
 package fr.insa.leroy.projet.test.gui;
 
-import javafx.scene.canvas.Canvas;
+
+import fr.insa.leroy.projet.test.Treilli;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -13,29 +14,34 @@ import javafx.scene.layout.BorderPane;
  */
 public class MainPanel extends BorderPane {
     
+    private Treilli model;
     
-    private DessinCanvas cDessin;
     private InterfaceH outilsTop;
     private InterfaceL outilsLeft;
-    private Centre centre;
-    //private Dessin dessin;
+    private Dessin dessin;
     
-    public MainPanel() {
+    
+    
+    public MainPanel(Treilli model) {
+        this.model = model;
         this.outilsTop = new InterfaceH();
         this.outilsLeft = new InterfaceL();
-        this.centre = new Centre();
-       // this.dessin = new Dessin(this);
+        this.dessin = new Dessin(this);
         
         this.setTop(this.outilsTop);
         this.setLeft(this.outilsLeft);
-       // this.setCenter(this.dessin);
-       
-       this.setCenter(this.centre);
-       
-       this.cDessin = new DessinCanvas();
-       this.setCenter(this.cDessin);
+        this.setCenter(this.dessin);
        
        
+       
+       
+    }
+
+    /**
+     * @return the model
+     */
+    public Treilli getModel() {
+        return model;
     }
     
 }

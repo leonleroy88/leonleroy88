@@ -7,6 +7,7 @@ package fr.insa.leroy.projet.test.gui;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -18,38 +19,38 @@ import javafx.stage.Stage;
  * @author Elève
  */
 public class InterfaceL extends VBox {
-    
-  private Button bNouveau;
-  private Button bBarre;
-  private ChoiceBox menuderoule;  
-  private Text texte;
-  private Stage stage;
-  private Button commencer;
-    
-    public InterfaceL()
-            {
-    
-                
-    this.bNouveau = new Button("Noeud"); 
-    this.bNouveau.setOnAction((t) -> {
-        System.out.println("Noeud");
-    });
-    
-    this.bBarre = new Button("Barre");
-    this.bBarre.setOnAction((t) -> {
-        System.out.println("Barre");
-      //window.setCenter(this.);
-        
-    });
-    this.texte = new Text("Ana & Allan & Léon");
+
+    private Button noeud;
+    private Button bBarre;
+    private ChoiceBox menuderoule;
+    private Text texte;
+    private Stage stage;
+    private Button commencer;
+
+    public InterfaceL() {
+
+        this.noeud = new Button("Noeud");
+        this.noeud.setOnAction((t) -> {
+            System.out.println("Noeud");
+        });
+
+        this.bBarre = new Button("Barre");
+        this.bBarre.setOnAction((t) -> {
+            System.out.println("Barre");
+            //window.setCenter(this.);
+
+        });
+        this.texte = new Text("Ana & Allan & Léon");
         texte.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
         texte.setTextAlignment(TextAlignment.CENTER);
-        
- this.commencer = new Button("Commencer");
- this.commencer.setOnAction((t) -> {
-     stage.setTitle("Nouvelle page");
- });
-    
-    this.getChildren().addAll(this.bNouveau, this.bBarre,this.commencer);
-}
+
+        this.commencer = new Button("Commencer");
+        this.commencer.setOnAction((t) -> {
+
+        });
+
+        this.getChildren().addAll(this.noeud, this.bBarre, this.commencer);
+
+    }
+
 }
