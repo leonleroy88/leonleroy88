@@ -7,10 +7,10 @@ package fr.insa.leroy.projet.test.gui;
 import fr.insa.leroy.projet.test.Barre;
 import fr.insa.leroy.projet.test.Noeud;
 import fr.insa.leroy.projet.test.Treilli;
+import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -41,12 +41,12 @@ public class Dessin extends Pane{
             Noeud cur = model.getNoeuds().get(i);
             // Group rep = cur.dessine();
             Ellipse rep = new Ellipse(cur.getPx(), cur.getPy(), 5, 5);
+            
             this.getChildren().add(rep);
         }  
         for (int j =0; j < model.getBarres().size() ; j++){
             Barre bebe = model.getBarres().get(j);
-            Line lol = new Line(bebe.getNoeudDebut().getPx(), bebe.getNoeudDebut().getPy(), bebe.getNoeudArrivee().getPx(), bebe.getNoeudArrivee().getPy());
-            
+            Group lol = bebe.dessine();
             this.getChildren().add(lol);
             
         }

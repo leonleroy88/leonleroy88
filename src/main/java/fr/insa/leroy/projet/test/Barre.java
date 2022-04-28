@@ -4,6 +4,10 @@
  */
 package fr.insa.leroy.projet.test;
 
+import java.awt.Color;
+import javafx.scene.Group;
+import javafx.scene.shape.Line;
+
 /**
  *
  * @author Elève
@@ -33,7 +37,11 @@ public class Barre {
         b = new Barre(noeudD, noeudF);
     }*/
         
-    
+    public Group dessine(){
+        Line res = new Line(this.getNoeudDebut().getPx(), this.getNoeudDebut().getPy(), this.getNoeudArrivee().getPx(), this.getNoeudArrivee().getPy());
+        Group g = new Group(res);
+        return g;
+    }
     /**
      * @return the identificateur
      */
