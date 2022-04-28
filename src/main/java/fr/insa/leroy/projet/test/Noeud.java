@@ -67,14 +67,8 @@ public abstract class Noeud {
     @Override
      public String toString(){
        return "Ton point : [id : "+this.id +" px:"+this.px+" py:"+this.py+" force:"+this.force.toString() ;
-    
     } 
-       
-    
-    
-    
-    
-    
+     
     public double getPx(){
         return (this.px);
     }

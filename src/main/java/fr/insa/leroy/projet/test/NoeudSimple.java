@@ -17,9 +17,7 @@ public class NoeudSimple extends Noeud {
         this.px=PX;
         this.py=PY;
     }
-    
-        
-    
+      
     @Override
     public String toString(){
        return "Noeud Simple : [id : "+this.id +" px:"+this.px+" py:"+this.py+" force:"+this.force.toString() ;
