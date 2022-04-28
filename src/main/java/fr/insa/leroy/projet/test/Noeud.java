@@ -37,7 +37,7 @@ public abstract class Noeud {
         this.force=V;      
     }
    
-    public static Noeud entreeNoeud (int ID, double PX, double PY, Vecteur2D V){
+ /*   public static Noeud entreeNoeud (int ID, double PX, double PY, Vecteur2D V){
        double fx,fy;
        int type;
        System.out.println("Quel type de Noeud ? 0 noeud simple / 1 pour appui simple / 2 pour appui double");
@@ -62,7 +62,7 @@ public abstract class Noeud {
        Noeud n = new Noeud(PX , PY , V){};  
        return(n);
                
-       }   
+       }   */
     
     @Override
      public String toString(){
@@ -94,7 +94,7 @@ public abstract class Noeud {
         this.py=pY;
     }
    
-    
+    public abstract Group dessine();
     
 }
                

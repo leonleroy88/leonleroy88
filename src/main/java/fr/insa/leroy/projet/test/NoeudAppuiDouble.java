@@ -5,6 +5,7 @@
 package fr.insa.leroy.projet.test;
 
 import javafx.scene.Group;
+import javafx.scene.shape.Ellipse;
 
 /**
  *
@@ -23,6 +24,14 @@ public class NoeudAppuiDouble extends NoeudAppui {
        return "Noeud Appui Double : [id : "+this.id +" px:"+this.px+" py:"+this.py+" force:"+this.force.toString() ;
     
     }     
+
+    @Override
+    public Group dessine() {
+         Ellipse rep = new Ellipse(this.getPx(), this.getPy(), 5, 5);
+         Group l = new Group(rep);
+         return l;
+            
+     }
 
       
     

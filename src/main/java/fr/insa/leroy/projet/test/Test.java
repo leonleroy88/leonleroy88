@@ -15,8 +15,8 @@ public class Test {
     Vecteur2D v1;
     Noeud n1;
     Vecteur2D fce = new Vecteur2D(0,0);
-    n1 = Noeud.entreeNoeud(ID,PX, PY, fce);
-    System.out.println(n1.toString());
+   // n1 = Noeud.entreeNoeud(ID,PX, PY, fce);
+    //System.out.println(n1.toString());
    
     // v1 = new Vecteur2D(0,0);
      //v1.setvx();

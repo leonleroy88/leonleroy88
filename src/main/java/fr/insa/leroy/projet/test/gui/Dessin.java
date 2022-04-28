@@ -39,8 +39,8 @@ public class Dessin extends Pane{
         Treilli model = this.main.getModel();
         for(int i = 0 ; i < model.getNoeuds().size() ; i ++) {
             Noeud cur = model.getNoeuds().get(i);
-            // Group rep = cur.dessine();
-            Ellipse rep = new Ellipse(cur.getPx(), cur.getPy(), 5, 5);
+            Group rep = cur.dessine();
+           // Ellipse rep = new Ellipse(cur.getPx(), cur.getPy(), 5, 5);
             
             this.getChildren().add(rep);
         }  
