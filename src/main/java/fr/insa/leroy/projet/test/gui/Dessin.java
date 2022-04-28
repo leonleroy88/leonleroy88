@@ -10,6 +10,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 /**
  * sert a rien pour le moment 
@@ -32,12 +36,15 @@ public class Dessin extends Pane{
     
     public  void redrawAll() {
         this.getChildren().clear();
+       
+        
         Treilli model = this.main.getModel();
         for(int i = 0 ; i < model.getNoeuds().size() ; i ++) {
             Noeud cur = model.getNoeuds().get(i);
             // Group rep = cur.dessine();
             Ellipse rep = new Ellipse(cur.getPx(), cur.getPy(), 10, 10);
             this.getChildren().add(rep);
+            
         }
        
     }
