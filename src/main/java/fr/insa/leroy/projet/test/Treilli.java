@@ -24,6 +24,10 @@ public class Treilli {
     public void ajouteNoeud(Noeud n) {
         this.getNoeuds().add(n);
     }
+    public void ajouteBarre(Barre b){
+        this.getBarres().add(b);
+    }
+    
     
     public static Treilli treilliTest(){
         Treilli res;
