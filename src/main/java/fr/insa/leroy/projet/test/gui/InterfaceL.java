@@ -8,6 +8,7 @@ package fr.insa.leroy.projet.test.gui;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -26,6 +27,7 @@ public class InterfaceL extends VBox {
     private RadioButton bBarre;
     private ChoiceBox menuderoule;
     private Text texte;
+    private Text Tas;
     private Stage stage;
     private RadioButton noeudDou;
 
@@ -43,15 +45,25 @@ public class InterfaceL extends VBox {
         
         this.noeudDou = new RadioButton("Noeud Double");
         
+        this.Tas = new Text("Barre :");
+        Tas.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
+        Tas.setTextAlignment(TextAlignment.CENTER);
+        //this.getChildren().add(this.Tas);
 
         this.bBarre = new RadioButton("Barre");
         this.bBarre.setOnAction((t) -> {
             System.out.println("Barre");
         });
+        ToggleGroup gBoutons = new ToggleGroup();
+        this.noeudsimple.setToggleGroup(gBoutons);
+        this.noeudDou.setToggleGroup(gBoutons);
+        this.bBarre.setToggleGroup(gBoutons);
+        this.noeudsimple.setSelected(true);
+        
        
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
         this.setSpacing(10);
-        this.getChildren().addAll(this.noeudsimple,this.noeudDou, this.bBarre);
+       this.getChildren().addAll(this.noeudsimple,this.noeudDou,this.Tas, this.bBarre);
 
     }
 
