@@ -20,6 +20,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class Dessin extends Pane{
     private MainPanel main;
+    private Dessin dessinP;
     
     public Dessin(MainPanel main) {
         super();

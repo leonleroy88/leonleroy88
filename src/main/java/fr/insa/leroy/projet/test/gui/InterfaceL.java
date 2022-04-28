@@ -4,8 +4,10 @@
  */
 package fr.insa.leroy.projet.test.gui;
 
+
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -20,36 +22,36 @@ import javafx.stage.Stage;
  */
 public class InterfaceL extends VBox {
 
-    private Button noeud;
-    private Button bBarre;
+    private RadioButton noeudsimple;
+    private RadioButton bBarre;
     private ChoiceBox menuderoule;
     private Text texte;
     private Stage stage;
-    private Button commencer;
+    private RadioButton noeudDou;
 
-    public InterfaceL() {
-
-        this.noeud = new Button("Noeud");
-        this.noeud.setOnAction((t) -> {
-            System.out.println("Noeud");
-        });
-
-        this.bBarre = new Button("Barre");
-        this.bBarre.setOnAction((t) -> {
-            System.out.println("Barre");
-            //window.setCenter(this.);
-
-        });
-        this.texte = new Text("Ana & Allan & Léon");
+ public InterfaceL() {
+     
+        this.texte = new Text("Les Noeuds :");
         texte.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
         texte.setTextAlignment(TextAlignment.CENTER);
+        this.getChildren().add(this.texte);
 
-        this.commencer = new Button("Commencer");
-        this.commencer.setOnAction((t) -> {
-
+        this.noeudsimple = new RadioButton("Noeud Simple");
+        this.noeudsimple.setOnAction((t) -> {
+            System.out.println("Noeud Simple");
         });
+        
+        this.noeudDou = new RadioButton("Noeud Double");
+        
+
+        this.bBarre = new RadioButton("Barre");
+        this.bBarre.setOnAction((t) -> {
+            System.out.println("Barre");
+        });
+       
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
-        this.getChildren().addAll(this.noeud, this.bBarre, this.commencer);
+        this.setSpacing(10);
+        this.getChildren().addAll(this.noeudsimple,this.noeudDou, this.bBarre);
 
     }
 
