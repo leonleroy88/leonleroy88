@@ -48,7 +48,7 @@ public class InterfaceL extends VBox {
         this.commencer.setOnAction((t) -> {
 
         });
-        FxUtils.setSimpleBorder(this, Color.RED, 2);
+        FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
         this.getChildren().addAll(this.noeud, this.bBarre, this.commencer);
 
     }

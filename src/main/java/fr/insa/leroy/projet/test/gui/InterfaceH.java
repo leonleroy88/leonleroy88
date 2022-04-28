@@ -55,7 +55,7 @@ public class InterfaceH extends HBox {
         });
 
         this.setSpacing(15);
-        FxUtils.setSimpleBorder(this, Color.RED, 2);
+        FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
         this.getChildren().addAll(this.supprime, this.help);
 
         // coucou les loulous

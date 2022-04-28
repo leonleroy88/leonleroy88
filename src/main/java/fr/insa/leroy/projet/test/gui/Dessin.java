@@ -26,7 +26,7 @@ public class Dessin extends Pane{
         clip.widthProperty().bind(this.widthProperty());
         this.setClip(clip);
         this.main = main;
-        FxUtils.setSimpleBorder(this, Color.RED, 2);
+        FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
         this.redrawAll();
     }
     
