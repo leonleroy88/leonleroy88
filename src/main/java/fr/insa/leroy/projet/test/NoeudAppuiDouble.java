@@ -5,7 +5,7 @@
 package fr.insa.leroy.projet.test;
 
 import javafx.scene.Group;
-import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Rectangle;
 
 /**
  *
@@ -27,7 +27,7 @@ public class NoeudAppuiDouble extends NoeudAppui {
 
     @Override
     public Group dessine() {
-         Ellipse rep = new Ellipse(this.getPx(), this.getPy(), 5, 5);
+         Rectangle rep = new Rectangle(this.getPx(), this.getPy(), 8, 8);
          Group l = new Group(rep);
          return l;
             

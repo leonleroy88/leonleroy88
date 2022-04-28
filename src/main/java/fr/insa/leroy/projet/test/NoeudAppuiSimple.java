@@ -26,7 +26,7 @@ public class  NoeudAppuiSimple extends NoeudAppui {
 
     @Override
     public Group dessine() {
-        Ellipse rep = new Ellipse(this.getPx(), this.getPy(), 5, 5);
+        Ellipse rep = new Ellipse(this.getPx(), this.getPy(), 5, 8);
          Group l = new Group(rep);
          return l;
        }
