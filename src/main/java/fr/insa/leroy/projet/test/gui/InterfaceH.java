@@ -59,5 +59,6 @@ public class InterfaceH extends HBox {
         this.getChildren().addAll(this.supprime, this.help);
 
         // coucou les loulous
+        System.out.println("coucou Léon");
     }
 }

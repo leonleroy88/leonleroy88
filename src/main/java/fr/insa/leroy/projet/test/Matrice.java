@@ -1,5 +1,4 @@
-
-import fr.insa.leroy.projet.test.Lire;
+package fr.insa.leroy.projet.test;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
