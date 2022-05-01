@@ -12,30 +12,28 @@ import javafx.scene.paint.Color;
  * @author Elève
  */
 public class Controleur {
+
     private MainPanel vue;
-    
+
     private int etat;
 
-public Controleur(MainPanel vue) {
-    this.vue = vue;
+    public Controleur(MainPanel vue) {
+        this.vue = vue;
 
-}
-
-public void changetat(int nouvelEtat){
-    if (nouvelEtat == 30){
-        
     }
-    
-}
 
-    void clikdanslazone(MouseEvent t) {
+    public void changetat(int nouvelEtat) {
+        if (nouvelEtat == 30) {
+
+        }
+
+    }
+
+    public void clikdanslazone(MouseEvent t) {
         double px = t.getX();
         double py = t.getY();
         Color col = Color.BLUE;
-        
-        
-    }
-        
 
+    }
 
 }

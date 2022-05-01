@@ -63,7 +63,7 @@ public class InterfaceL extends VBox {
        
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
         this.setSpacing(10);
-       this.getChildren().addAll(this.noeudsimple,this.noeudDou,this.Tas, this.bBarre);
+        this.getChildren().addAll(this.noeudsimple,this.noeudDou,this.Tas, this.bBarre);
 
     }
 
