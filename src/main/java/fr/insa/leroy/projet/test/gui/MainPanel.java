@@ -15,6 +15,7 @@ import javafx.scene.layout.BorderPane;
 public class MainPanel extends BorderPane {
     
     private Treilli model;
+    private Controleur control;
     
     private InterfaceH outilsTop;
     private InterfaceL outilsLeft;
@@ -24,6 +25,9 @@ public class MainPanel extends BorderPane {
     
     public MainPanel(Treilli model) {
         this.model = model;
+        this.control = new Controleur(this);
+        
+        
         this.outilsTop = new InterfaceH();
         this.outilsLeft = new InterfaceL();
         this.dessin = new Dessin(this);

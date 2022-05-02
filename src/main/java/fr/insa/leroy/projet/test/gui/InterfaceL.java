@@ -41,6 +41,7 @@ public class InterfaceL extends VBox {
         this.noeudsimple = new RadioButton("Noeud Simple");
         this.noeudsimple.setOnAction((t) -> {
             System.out.println("Noeud Simple");
+           //this.noeudsimple.
         });
         
         this.noeudDou = new RadioButton("Noeud Double");
