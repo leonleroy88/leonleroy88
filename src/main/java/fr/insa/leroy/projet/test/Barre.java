@@ -4,7 +4,7 @@
  */
 package fr.insa.leroy.projet.test;
 
-import java.awt.Color;
+import static java.lang.Math.atan;
 import javafx.scene.Group;
 import javafx.scene.shape.Line;
 
@@ -36,7 +36,34 @@ public class Barre {
         Noeud noeudD, noeudF;
         b = new Barre(noeudD, noeudF);
     }*/
+    
+////    Méthode qui renvoie le noeud opposé au noeud rentré
+   public static Noeud noeudOppose (Barre b, Noeud n) {
+       Noeud nopp;
+       if (n!=b.noeudArrivee && n!=b.getNoeudDebut()){
+           throw new Error ("Le noeud entré ne correspond pas à la bare entrée");
+       }
+       if (n==b.noeudArrivee){
+           nopp=b.noeudDebut;
+       }
+       else nopp=b.noeudArrivee;
+       return nopp;
+   }
+    
+////    Méthode qui calcule l'angle
+    public double Angle (Noeud n, Barre b) {
+        double y1, y2, x1, x2;
+        Noeud nopp=noeudOppose(b,n);
+//        Si le noeud entré est le noeud de départ, n récupère les coordonées du neoud d'arrivée. Et inversement.
+        x1 = n.getPx();
+        y1 = n.getPy();
+        x2 = nopp.getPx();
+        y2 = nopp.getPy();
         
+        
+        double angle = atan((y2-y1)/(x2-x1));
+        return angle;
+    }    
     public Group dessine(){
         Line res = new Line(this.getNoeudDebut().getPx(), this.getNoeudDebut().getPy(), this.getNoeudArrivee().getPx(), this.getNoeudArrivee().getPy());
         Group g = new Group(res);
