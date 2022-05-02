@@ -10,4 +10,15 @@ package fr.insa.leroy.projet.test.calcul;
  */
 public class Matrix {
     
+    public Matrix(int nl, int lc){
+        
+    }
+    public void getRowDimension(){
+        
+    }
+    public void getColumDimension(){
+        
+    }
+    
+    
 }
