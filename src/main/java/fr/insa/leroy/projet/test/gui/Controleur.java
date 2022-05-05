@@ -5,7 +5,7 @@
 package fr.insa.leroy.projet.test.gui;
 
 import fr.insa.leroy.projet.test.Noeud;
-import fr.insa.leroy.projet.test.Treilli;
+import fr.insa.leroy.projet.test.Treillis;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -37,7 +37,7 @@ public class Controleur {
         double px = t.getX();
         double py = t.getY();
         //Color col = Color.BLUE;
-        Treilli model = this.vue.getModel();
+        Treillis model = this.vue.getModel();
       //  model.add(new Noeud(px,py) );
         
 

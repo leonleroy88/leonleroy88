@@ -4,6 +4,7 @@
  */
 package fr.insa.leroy.projet.test;
 
+import java.util.ArrayList;
 import javafx.scene.Group;
 import javafx.scene.shape.Ellipse;
 
@@ -12,15 +13,19 @@ import javafx.scene.shape.Ellipse;
  * @author Elève
  */
 public class  NoeudAppuiSimple extends NoeudAppui {
+    private double normale;
     
-    public NoeudAppuiSimple(double PX, double PY, Vecteur2D V) {
-        super(PX, PY, V);
+    
+    public NoeudAppuiSimple(int id, double PX, double PY, Vecteur2D V, double normale, ArrayList<Barre> barresDepart, ArrayList<Barre> barresArrive)
+    {
+        super(id,PX, PY, V, barresArrive, barresDepart);
         this.px=PX;
         this.py=PY;
+        this.normale = normale;
     }
 @Override
     public String toString(){
-       return "Noeud Appui simple : [id : "+this.id +"Ppx:"+this.px+" py:"+this.py+" force:"+this.force.toString() ;
+       return "Noeud Appui simple : [id : "+this.getId() +"Ppx:"+this.px+" py:"+this.py+" force:"+this.getForce().toString() ;
     
     }     
 
@@ -30,6 +35,20 @@ public class  NoeudAppuiSimple extends NoeudAppui {
          Group l = new Group(rep);
          return l;
        }
+
+    /**
+     * @return the normale
+     */
+    public double getNormale() {
+        return normale;
+    }
+
+    /**
+     * @param normale the normale to set
+     */
+    public void setNormale(double normale) {
+        this.normale = normale;
+    }
 
 
     

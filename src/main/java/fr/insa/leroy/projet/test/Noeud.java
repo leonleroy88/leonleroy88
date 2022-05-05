@@ -4,24 +4,29 @@
  */
 package fr.insa.leroy.projet.test;
 
+import java.util.ArrayList;
 import javafx.scene.Group;
-import javafx.scene.shape.Ellipse;
 
 /**
  *
  * @author Elève
  */
 public abstract class Noeud {
-    int  id=-1;
+    private int  id;
     double px;
     double py;
-    Vecteur2D force;
+    private Vecteur2D force;
+    private ArrayList<Barre> barreArrivee = new ArrayList();
+    private ArrayList<Barre> barreDebut = new ArrayList();
     
-    public Noeud(int ID, double PX, double PY, Vecteur2D V){
+    
+    public Noeud(int ID, double PX, double PY, Vecteur2D V, ArrayList<Barre> barreArrivee, ArrayList<Barre> barreDebut){
         this.id=ID;
         this.px=PX;
         this.py=PY;
-        this.force=V;      
+        this.force=V;     
+        this.barreArrivee = barreArrivee;
+        this.barreDebut = barreDebut;
     }
     public Noeud(double PX, double PY, Vecteur2D V){
         this.id=-1;
@@ -66,7 +71,7 @@ public abstract class Noeud {
     
     @Override
      public String toString(){
-       return "Ton point : [id : "+this.id +" px:"+this.px+" py:"+this.py+" force:"+this.force.toString() ;
+       return "Ton point : [id : "+this.getId() +" px:"+this.px+" py:"+this.py+" force:"+this.getForce().toString() ;
     } 
      
     public double getPx(){
@@ -96,5 +101,63 @@ public abstract class Noeud {
    
     public abstract Group dessine();
     
+    public static int nbrInconnues(Noeud n){
+        if ( n instanceof NoeudAppuiSimple){
+            return 1;
+        }
+        else if (n instanceof NoeudAppuiDouble){
+            return 2;
+        }
+        else 
+            return 0;
+    }
+
+    /**
+     * @return the barreArrivee
+     */
+    public ArrayList<Barre> getBarreArrivee() {
+        return barreArrivee;
+    }
+
+    /**
+     * @return the barreDebut
+     */
+    public ArrayList<Barre> getBarreDebut() {
+        return barreDebut;
+    }
+    public static ArrayList<Barre> barresIncidentes(Noeud n){
+        ArrayList<Barre> barresIncidentes = new ArrayList();
+        barresIncidentes.addAll(n.barreArrivee);
+        barresIncidentes.addAll(n.barreDebut);
+        return barresIncidentes;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the force
+     */
+    public Vecteur2D getForce() {
+        return force;
+    }
+
+    /**
+     * @param force the force to set
+     */
+    public void setForce(Vecteur2D force) {
+        this.force = force;
+    }
 }
                

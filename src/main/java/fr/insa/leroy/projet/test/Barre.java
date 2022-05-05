@@ -20,16 +20,22 @@ public class Barre {
     private double compression;
     private double cout;
 
-    public Barre (int id, Noeud debut, Noeud fin){
+    public Barre (int id, Noeud debut, Noeud fin, double compression, double traction){
         this.identificateur = id;
         this.noeudDebut = debut;
         this.noeudArrivee = fin;
+        debut.getBarreDebut().add(this);
+        fin.getBarreArrivee().add(this);
+        this.compression = compression;
+        this.traction = traction;
+        
     } 
     
     public Barre ( Noeud debut, Noeud fin){
         this.identificateur = -1;
         this.noeudDebut = debut;
         this.noeudArrivee = fin;
+        
     } 
     
     /*public static Barre NoeudOppose(Barre b, Noeud n){
@@ -51,7 +57,7 @@ public class Barre {
    }
     
 ////    Méthode qui calcule l'angle
-    public double Angle (Noeud n, Barre b) {
+    public static double Angle (Noeud n, Barre b) {
         double y1, y2, x1, x2;
         Noeud nopp=noeudOppose(b,n);
 //        Si le noeud entré est le noeud de départ, n récupère les coordonées du neoud d'arrivée. Et inversement.
@@ -114,6 +120,34 @@ public class Barre {
    @Override
      public String toString(){
        return "Ta barre : [id : "+this.identificateur +" debut:"+this.noeudDebut+" fin:"+this.noeudArrivee;
+    }
+
+    /**
+     * @return the traction
+     */
+    public double getTraction() {
+        return traction;
+    }
+
+    /**
+     * @param traction the traction to set
+     */
+    public void setTraction(double traction) {
+        this.traction = traction;
+    }
+
+    /**
+     * @return the compression
+     */
+    public double getCompression() {
+        return compression;
+    }
+
+    /**
+     * @param compression the compression to set
+     */
+    public void setCompression(double compression) {
+        this.compression = compression;
     }
 
 }

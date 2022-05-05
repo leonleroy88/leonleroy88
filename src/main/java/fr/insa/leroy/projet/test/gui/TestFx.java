@@ -4,7 +4,7 @@
  */
 package fr.insa.leroy.projet.test.gui;
 
-import fr.insa.leroy.projet.test.Treilli;
+import fr.insa.leroy.projet.test.Treillis;
 import javafx.application.Application; 
 import javafx.scene.Scene;
 import javafx.stage.Stage;  
@@ -16,7 +16,7 @@ public void start(Stage primaryStage) throws Exception {
   
     
 primaryStage.setTitle("Projet - Treillis");
-Treilli model = Treilli.treilliTest();
+Treillis model = Treillis.treilliTest();
 Scene scene = new Scene(new MainPanel(model),700,600);
 primaryStage.setScene(scene);
 primaryStage.show();

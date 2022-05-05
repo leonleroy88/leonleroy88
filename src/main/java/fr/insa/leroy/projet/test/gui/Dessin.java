@@ -6,7 +6,7 @@ package fr.insa.leroy.projet.test.gui;
 
 import fr.insa.leroy.projet.test.Barre;
 import fr.insa.leroy.projet.test.Noeud;
-import fr.insa.leroy.projet.test.Treilli;
+import fr.insa.leroy.projet.test.Treillis;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -37,7 +37,7 @@ public class Dessin extends Pane{
         this.getChildren().clear();
        
         
-        Treilli model = this.main.getModel();
+        Treillis model = this.main.getModel();
         for(int i = 0 ; i < model.getNoeuds().size() ; i ++) {
             Noeud cur = model.getNoeuds().get(i);
             Group rep = cur.dessine();

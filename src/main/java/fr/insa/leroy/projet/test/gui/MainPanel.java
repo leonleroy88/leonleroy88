@@ -5,7 +5,7 @@
 package fr.insa.leroy.projet.test.gui;
 
 
-import fr.insa.leroy.projet.test.Treilli;
+import fr.insa.leroy.projet.test.Treillis;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -14,7 +14,7 @@ import javafx.scene.layout.BorderPane;
  */
 public class MainPanel extends BorderPane {
     
-    private Treilli model;
+    private Treillis model;
     private Controleur control;
     
     private InterfaceH outilsTop;
@@ -23,7 +23,7 @@ public class MainPanel extends BorderPane {
     
     
     
-    public MainPanel(Treilli model) {
+    public MainPanel(Treillis model) {
         this.model = model;
         this.control = new Controleur(this);
         
@@ -44,7 +44,7 @@ public class MainPanel extends BorderPane {
     /**
      * @return the model
      */
-    public Treilli getModel() {
+    public Treillis getModel() {
         return model;
     }
     
