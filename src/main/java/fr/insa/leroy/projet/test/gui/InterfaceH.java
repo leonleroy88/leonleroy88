@@ -18,7 +18,6 @@ import javafx.scene.paint.Color;
  */
 public class InterfaceH extends HBox {
 
-   
     private MenuBar bar;
     private Menu fichier;
     private Button supprime;
@@ -31,7 +30,7 @@ public class InterfaceH extends HBox {
         this.sauvegarder = new MenuItem("Enregistrer");
         this.ouvrir = new MenuItem("Ouvrir");
         this.nouveau = new MenuItem("Nouveau");
-        
+
         fichier.getItems().add(ouvrir);
         fichier.getItems().add(sauvegarder);
         fichier.getItems().add(nouveau);
@@ -44,9 +43,7 @@ public class InterfaceH extends HBox {
         this.fichier.setOnAction((t) -> {
 
         });
-        
-        
-        
+
         this.help = new Button("A propos");
         this.help.setOnAction((t) -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -61,6 +58,5 @@ public class InterfaceH extends HBox {
         this.getChildren().addAll(this.supprime, this.help);
 
         // coucou les loulous
-        
     }
 }

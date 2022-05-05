@@ -4,7 +4,6 @@
  */
 package fr.insa.leroy.projet.test.gui;
 
-
 import fr.insa.leroy.projet.test.Noeud;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
@@ -33,8 +32,8 @@ public class InterfaceL extends VBox {
     private Controleur controle;
     private Noeud noeudPrecedent;
 
- public InterfaceL() {
-     
+    public InterfaceL() {
+
         this.noeudPrecedent = null;
         this.texte = new Text("Les Noeuds :");
         texte.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
@@ -46,12 +45,12 @@ public class InterfaceL extends VBox {
             System.out.println("Noeud Simple");
             this.controle.boutonNoeudSimple(t);
         });
-        
+
         this.noeudDou = new RadioButton("Noeud Double");
         this.noeudDou.setOnAction((t) -> {
             this.controle.boutonNoeuddouble(t);
         });
-        
+
         this.Tas = new Text("Barre :");
         Tas.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
         Tas.setTextAlignment(TextAlignment.CENTER);
@@ -66,11 +65,10 @@ public class InterfaceL extends VBox {
         this.noeudDou.setToggleGroup(gBoutons);
         this.bBarre.setToggleGroup(gBoutons);
         this.noeudsimple.setSelected(true);
-        
-       
+
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
         this.setSpacing(10);
-        this.getChildren().addAll(this.noeudsimple,this.noeudDou,this.Tas, this.bBarre);
+        this.getChildren().addAll(this.noeudsimple, this.noeudDou, this.Tas, this.bBarre);
 
     }
 
@@ -80,6 +78,26 @@ public class InterfaceL extends VBox {
     public RadioButton getNoeudsimple() {
         return noeudsimple;
     }
-    
-    
+
+    /**
+     * @param noeudsimple the noeudsimple to set
+     */
+    public void setNoeudsimple(RadioButton noeudsimple) {
+        this.noeudsimple = noeudsimple;
+    }
+
+    /**
+     * @return the bBarre
+     */
+    public RadioButton getbBarre() {
+        return bBarre;
+    }
+
+    /**
+     * @return the menuderoule
+     */
+    public ChoiceBox getMenuderoule() {
+        return menuderoule;
+    }
+
 }
