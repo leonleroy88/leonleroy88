@@ -33,7 +33,7 @@ public class Dessin extends Pane{
         this.redrawAll();
     }
     
-    public  void redrawAll() {
+    public void redrawAll() {
         this.getChildren().clear();
        
         

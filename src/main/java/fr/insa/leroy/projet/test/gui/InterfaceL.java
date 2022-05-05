@@ -30,6 +30,7 @@ public class InterfaceL extends VBox {
     private Text Tas;
     private Stage stage;
     private RadioButton noeudDou;
+    private Controleur controle;
 
  public InterfaceL() {
      
@@ -41,10 +42,13 @@ public class InterfaceL extends VBox {
         this.noeudsimple = new RadioButton("Noeud Simple");
         this.noeudsimple.setOnAction((t) -> {
             System.out.println("Noeud Simple");
-           //this.noeudsimple.
+            this.controle.boutonNoeudSimple(t);
         });
         
         this.noeudDou = new RadioButton("Noeud Double");
+        this.noeudDou.setOnAction((t) -> {
+            this.controle.boutonNoeuddouble(t);
+        });
         
         this.Tas = new Text("Barre :");
         Tas.setFont(Font.font("ARIAL", FontWeight.THIN, 12));

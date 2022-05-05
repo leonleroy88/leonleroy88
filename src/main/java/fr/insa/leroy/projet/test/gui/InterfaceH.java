@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
  */
 public class InterfaceH extends HBox {
 
+    private BoutonIcone bZoomDouble;
     private MenuBar bar;
     private Menu fichier;
     private Button supprime;
@@ -44,7 +45,10 @@ public class InterfaceH extends HBox {
         this.fichier.setOnAction((t) -> {
 
         });
-
+        
+        this.bZoomDouble = new BoutonIcone("icones/LEON.png",32,32);
+        
+        
         this.help = new Button("A propos");
         this.help.setOnAction((t) -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

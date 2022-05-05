@@ -4,7 +4,6 @@
  */
 package fr.insa.leroy.projet.test.gui;
 
-import fr.insa.leroy.projet.test.Noeud;
 import fr.insa.leroy.projet.test.Treillis;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
@@ -27,6 +26,7 @@ public class Controleur {
 
     public void changetat(int nouvelEtat) {
         if (nouvelEtat == 30) {
+            
 
         }
 
@@ -43,7 +43,18 @@ public class Controleur {
 
     }
     }
-     void boutonNoeud(ActionEvent t){
+     public void boutonNoeudSimple(ActionEvent t){
         this.changetat(20);   
     }
+      public void boutonNoeuddouble(ActionEvent t){
+        this.changetat(30);   
+    }
+       public void boutonBarre(ActionEvent t){
+        this.changetat(40);   
+    }
+//        public void zoomDouble() {
+//        this.vue.setZoneModelVue(this.vue.getZoneModelVue().scale(0.5));
+//        this.vue.redrawAll();
+//    }
+     
 }
