@@ -5,7 +5,7 @@
 package fr.insa.leroy.projet.test.gui;
 
 
-import javafx.scene.control.Button;
+import fr.insa.leroy.projet.test.Noeud;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -31,9 +31,11 @@ public class InterfaceL extends VBox {
     private Stage stage;
     private RadioButton noeudDou;
     private Controleur controle;
+    private Noeud noeudPrecedent;
 
  public InterfaceL() {
      
+        this.noeudPrecedent = null;
         this.texte = new Text("Les Noeuds :");
         texte.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
         texte.setTextAlignment(TextAlignment.CENTER);
@@ -72,4 +74,12 @@ public class InterfaceL extends VBox {
 
     }
 
+    /**
+     * @return the noeudsimple
+     */
+    public RadioButton getNoeudsimple() {
+        return noeudsimple;
+    }
+    
+    
 }
