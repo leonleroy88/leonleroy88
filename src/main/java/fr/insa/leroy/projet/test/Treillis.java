@@ -38,16 +38,18 @@ public class Treillis {
         NoeudAppuiDouble n1 = new NoeudAppuiDouble(1, 0, 200, new Vecteur2D(0, 0), barreDebut, barreDebut);
         NoeudSimple n2 = new NoeudSimple(2, 100, 100, new Vecteur2D(0, -1000), barreDebut, barreDebut);
         NoeudAppuiSimple n3 = new NoeudAppuiSimple(3, 0, 0, new Vecteur2D(0, 0), 0, barreDebut, barreDebut);
-        Barre b1 = new Barre(n2, n3);
-        Barre b2 = new Barre(n2, n1);
-        Barre b3 = new Barre(n3, n1);
+        Barre b1 = new Barre(1,n2, n3,0,0);
+        Barre b2 = new Barre(2,n2, n1,0,0);
+        Barre b3 = new Barre(3,n3, n1,0,0);
         res.ajouteBarre(b1);
         res.ajouteBarre(b3);
         res.ajouteBarre(b2);
         res.ajouteNoeud(n1);
         res.ajouteNoeud(n2);
         res.ajouteNoeud(n3);
+        System.out.println("Barre "+ n1.getBarreDebut().size());
         return res;
+        
     }
 
     /**
@@ -184,7 +186,7 @@ public class Treillis {
             }
             //Equation selon x pour les tensions dans les barres
            // System.out.println("nbr barre inci "+Noeud.barresIncidentes(n).size() );
-            System.out.println("bare inci" + n.getBarreArrivee().size());
+            System.out.println("bare inci" + Noeud.barresIncidentes(n).size());
             for (int j = 0; j < Noeud.barresIncidentes(n).size(); j++) {
                 Barre b = Noeud.barresIncidentes(n).get(j);
                 double angle = Barre.Angle(n, b);
