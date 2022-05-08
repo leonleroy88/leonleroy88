@@ -4,6 +4,7 @@
  */
 package fr.insa.leroy.projet.test;
 
+import java.io.BufferedWriter;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import java.util.ArrayList;
@@ -310,6 +311,10 @@ public class Treillis {
 
     public static double[] resoudreMatrice(double[][] m) {
         return resolution(m);
+    }
+
+    public void save(BufferedWriter bout) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

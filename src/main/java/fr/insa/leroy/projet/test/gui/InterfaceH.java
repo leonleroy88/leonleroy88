@@ -4,6 +4,11 @@
  */
 package fr.insa.leroy.projet.test.gui;
 
+import fr.insa.leroy.projet.test.Treillis;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -11,6 +16,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  *
@@ -18,20 +25,35 @@ import javafx.scene.paint.Color;
  */
 public class InterfaceH extends HBox {
 
+    private Stage stage;
     private MenuBar bar;
     private Menu fichier;
     private Button supprime;
     private Menu aide;
     private Button help;
-    private MenuItem sauvegarder, ouvrir, nouveau;
+    private MenuItem sauvegarder, ouvrir, nouveau, enregistrer;
+    private File fichierCourant;
+    private Treillis treillis;
 
     public InterfaceH() {
         this.fichier = new Menu("Fichier");
-        this.sauvegarder = new MenuItem("Enregistrer");
+        this.enregistrer = new MenuItem("Enregistrer");
+        this.enregistrer.setOnAction((t) -> {
+            if (this.fichierCourant != null) {
+                save(this.fichierCourant);
+            } else {
+                saveAs();
+            }
+        });
+        this.sauvegarder = new MenuItem("Enregistrer sous");
+        this.sauvegarder.setOnAction((t) -> {
+            saveAs();
+        });
         this.ouvrir = new MenuItem("Ouvrir");
         this.nouveau = new MenuItem("Nouveau");
 
         fichier.getItems().add(ouvrir);
+        fichier.getItems().add(enregistrer);
         fichier.getItems().add(sauvegarder);
         fichier.getItems().add(nouveau);
         this.bar = new MenuBar(this.fichier);
@@ -59,4 +81,26 @@ public class InterfaceH extends HBox {
 
         // coucou les loulous
     }
+
+    public void saveAs() {
+        FileChooser chooser = new FileChooser();
+        File f = chooser.showSaveDialog(this.stage);
+        if (f != null) {
+            save(f);
+        }
+    }
+
+    private void save(File f) {
+        try (BufferedWriter bout = new BufferedWriter(new FileWriter(f))) {
+            treillis.save(bout);
+            this.fichierCourant = f;
+        } catch (IOException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Problème durant la sauvegarde");
+            alert.setContentText(ex.getLocalizedMessage());
+            alert.showAndWait();
+        }
+    }
+    
 }
