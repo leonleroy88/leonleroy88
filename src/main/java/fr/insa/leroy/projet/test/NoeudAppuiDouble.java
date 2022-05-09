@@ -6,6 +6,7 @@ package fr.insa.leroy.projet.test;
 
 import java.util.ArrayList;
 import javafx.scene.Group;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -26,13 +27,15 @@ public class NoeudAppuiDouble extends NoeudAppui {
     
     }     
 
-    @Override
+    
     public Group dessine() {
          Rectangle rep = new Rectangle(this.getPx(), this.getPy(), 8, 8);
          Group l = new Group(rep);
          return l;
             
      }
+
+   
 
       
     

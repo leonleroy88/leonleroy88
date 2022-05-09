@@ -22,7 +22,10 @@ public class  NoeudAppuiSimple extends NoeudAppui {
         this.px=PX;
         this.py=PY;
         this.normale = normale;
+        
     }
+  
+    
 @Override
     public String toString(){
        return "Noeud Appui simple : [id : "+this.getId() +"Ppx:"+this.px+" py:"+this.py+" force:"+this.getForce().toString() ;

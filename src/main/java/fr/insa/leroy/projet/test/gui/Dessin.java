@@ -8,9 +8,10 @@ import fr.insa.leroy.projet.test.Barre;
 import fr.insa.leroy.projet.test.Noeud;
 import fr.insa.leroy.projet.test.Treillis;
 import javafx.scene.Group;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -21,6 +22,7 @@ import javafx.scene.shape.Rectangle;
 public class Dessin extends Pane{
     private MainPanel main;
     private Dessin dessinP;
+    private Canvas test;
     
     public Dessin(MainPanel main) {
         super();
@@ -30,6 +32,10 @@ public class Dessin extends Pane{
         this.setClip(clip);
         this.main = main;
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
+//        this.test.setOnMouseClicked((t) -> {
+//            Controleur control = this.main.getControleur();
+//            control.clikdanslazone(t);
+//        });
         this.redrawAll();
     }
     
@@ -49,8 +55,9 @@ public class Dessin extends Pane{
             Barre bebe = model.getBarres().get(j);
             Group lol = bebe.dessine();
             this.getChildren().add(lol);
-            
+   
         }
+       
        
     
     

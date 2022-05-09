@@ -4,6 +4,7 @@
  */
 package fr.insa.leroy.projet.test;
 
+import fr.insa.leroy.projet.test.gui.Dessin;
 import java.io.BufferedWriter;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
@@ -18,6 +19,7 @@ public class Treillis {
 
     private List<Noeud> noeuds;
     private List<Barre> barres;
+
 
     public Treillis() {
         this.noeuds = new ArrayList<Noeud>();

@@ -34,6 +34,7 @@ public class InterfaceH extends HBox {
     private MenuItem sauvegarder, ouvrir, nouveau, enregistrer;
     private File fichierCourant;
     private Treillis treillis;
+    private MainPanel vue;
 
     public InterfaceH() {
         this.fichier = new Menu("Fichier");
@@ -102,5 +103,6 @@ public class InterfaceH extends HBox {
             alert.showAndWait();
         }
     }
+    
     
 }

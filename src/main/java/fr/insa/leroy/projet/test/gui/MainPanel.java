@@ -19,7 +19,7 @@ public class MainPanel extends BorderPane {
     
     private InterfaceH outilsTop;
     private InterfaceL outilsLeft;
-    private Dessin dessin;
+    Dessin dessin;
     
     
     
@@ -47,5 +47,7 @@ public class MainPanel extends BorderPane {
     public Treillis getModel() {
         return model;
     }
-    
+     public Controleur getControleur() {
+        return control;
+    }
 }
