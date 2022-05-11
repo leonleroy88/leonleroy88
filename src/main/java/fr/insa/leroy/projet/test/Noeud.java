@@ -6,6 +6,7 @@ package fr.insa.leroy.projet.test;
 
 import java.util.ArrayList;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -18,7 +19,7 @@ public abstract class Noeud {
     private Vecteur2D force;
     private ArrayList<Barre> barreArrivee = new ArrayList();
     private ArrayList<Barre> barreDebut = new ArrayList();
-    
+    private Color color;
     
     public Noeud(int ID, double PX, double PY, Vecteur2D V, ArrayList<Barre> barreArrivee, ArrayList<Barre> barreDebut){
         this.id=ID;
@@ -164,6 +165,20 @@ public abstract class Noeud {
      */
     public void setForce(Vecteur2D force) {
         this.force = force;
+    }
+
+    /**
+     * @return the color
+     */
+    public Color getColor() {
+        return color;
+    }
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(Color color) {
+        this.color = color;
     }
 }
                

@@ -51,9 +51,9 @@ public class Controleur {
                 n = this.main.getModel().noeudPlusProche(t.getX(), t.getY(), 5);
                 if (n != null){
                     if (noeudSelect != null)
-                     //   noeudSelect.setColor(Color.BLACK);
-                    noeudSelect = n;
-                   // noeudSelect.setColor(Color.RED);
+                     noeudSelect.setColor(Color.BLACK);
+                     noeudSelect = n;
+                     noeudSelect.setColor(Color.RED);
                 } else {
                     if (noeudSelect != null){
                       //  noeudSelect.setColor(Color.BLACK);
@@ -65,10 +65,10 @@ public class Controleur {
                 n = this.main.getModel().noeudPlusProche(t.getX(), t.getY(), 5);
                 if (n != null){
                     if (noeudSelect != null)
-                       // noeudSelect.setColor(Color.BLACK);
+                        noeudSelect.setColor(Color.BLACK);
                         System.out.println("Test"); 
                     noeudSelect = n;
-                   // noeudSelect.setColor(Color.RED);
+                        noeudSelect.setColor(Color.RED);
                     this.ChangerEtat(Etat.BARRE2);
                 }
                 break;
@@ -76,7 +76,7 @@ public class Controleur {
                 n = this.main.getModel().noeudPlusProche(t.getX(), t.getY(), 5);
                 if (n != null){
                     this.main.getModel().ajouteBarre(new Barre(this.noeudSelect, n));
-                   // this.noeudSelect.setColor(Color.BLACK);
+                    this.noeudSelect.setColor(Color.BLACK);
                     this.noeudSelect = null;
                     this.ChangerEtat(Etat.SELECT);
                 }
