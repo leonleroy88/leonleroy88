@@ -34,12 +34,12 @@ public class Treillis {
         this.getBarres().add(b);
     }
 
-  /*  public static Treillis treilliTest() {
+    public static Treillis treilliTest() {
         Treillis res;
         res = new Treillis();
         ArrayList<Barre> barreDebut = new ArrayList();
         NoeudAppuiDouble n1 = new NoeudAppuiDouble(1, 0, 200, new Vecteur2D(0, 0), barreDebut, barreDebut);
-        NoeudSimple n2 = new NoeudSimple(2, 100, 100, new Vecteur2D(0, -1000), barreDebut, barreDebut);
+        NoeudSimple n2 = new NoeudSimple( 100, 100, new Vecteur2D(0, -1000));
         NoeudAppuiSimple n3 = new NoeudAppuiSimple(3, 0, 0, new Vecteur2D(0, 0), 0, barreDebut, barreDebut);
         Barre b1 = new Barre(1,n2, n3,0,0);
         Barre b2 = new Barre(2,n2, n1,0,0);
@@ -54,7 +54,7 @@ public class Treillis {
         return res;
         
     }
-*/
+
     /**
      * @return the noeuds
      */

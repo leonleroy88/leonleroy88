@@ -6,7 +6,6 @@ package fr.insa.leroy.projet.test;
 
 import java.util.ArrayList;
 import javafx.scene.Group;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.Rectangle;
 
 /**

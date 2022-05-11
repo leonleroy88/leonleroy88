@@ -48,7 +48,7 @@ public class InterfaceL extends VBox {
            
         });
 
-        this.noeudDou = new RadioButton("Noeud Double");
+        this.noeudDou = new RadioButton("Noeud AppuiSimple");
         this.noeudDou.setOnAction((t) -> {
            
         });
@@ -56,7 +56,7 @@ public class InterfaceL extends VBox {
         this.Tas = new Text("Barre :");
         Tas.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
         Tas.setTextAlignment(TextAlignment.CENTER);
-        //this.getChildren().add(this.Tas);
+        
 
         this.bBarre = new RadioButton("Barre");
         this.bBarre.setOnAction((t) -> {
@@ -68,7 +68,7 @@ public class InterfaceL extends VBox {
         this.noeudsimple.setToggleGroup(gBoutons);
         this.noeudDou.setToggleGroup(gBoutons);
         this.bBarre.setToggleGroup(gBoutons);
-        this.noeudsimple.setSelected(true);
+        this.bBarre.setSelected(true);
 
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
         this.setSpacing(10);
