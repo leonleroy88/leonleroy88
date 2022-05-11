@@ -16,8 +16,9 @@ public void start(Stage primaryStage) throws Exception {
   
     
 primaryStage.setTitle("Projet - Treillis");
-Treillis model = Treillis.treilliTest();
-Scene scene = new Scene(new MainPanel(model),700,600);
+//Treillis model = Treillis.treilliTest();
+Treillis treillis = new Treillis();
+Scene scene = new Scene(new MainPanel(treillis),700,600);
 primaryStage.setScene(scene);
 primaryStage.show();
     

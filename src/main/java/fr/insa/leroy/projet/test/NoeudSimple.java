@@ -14,8 +14,10 @@ import javafx.scene.shape.Ellipse;
  */
 public class NoeudSimple extends Noeud { 
     
-    public NoeudSimple(int id, double PX, double PY, Vecteur2D V, ArrayList<Barre> barreArrivee, ArrayList<Barre> barreDebut) {
-        super(id,PX, PY, V, barreArrivee, barreDebut);
+    
+    
+    public NoeudSimple( double PX, double PY, Vecteur2D V) {
+        super(PX, PY, V);
         this.px=PX;
         this.py=PY;
     }

@@ -24,17 +24,15 @@ public class Barre {
         this.identificateur = id;
         this.noeudDebut = debut;
         this.noeudArrivee = fin;
-        debut.getBarreDebut().add(this);
-        fin.getBarreArrivee().add(this);
+        this.noeudDebut.getBarreDebut().add(this);
+        this.noeudArrivee.getBarreArrivee().add(this);
         this.compression = compression;
         this.traction = traction;
         
     } 
     
     public Barre ( Noeud debut, Noeud fin){
-        this.identificateur = -1;
-        this.noeudDebut = debut;
-        this.noeudArrivee = fin;
+        this(-1, debut, fin, 0, 0);
         
     } 
     

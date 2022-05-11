@@ -131,6 +131,12 @@ public abstract class Noeud {
         barresIncidentes.addAll(n.barreDebut);
         return barresIncidentes;
     }
+    public double distance(double x , double y){
+        double dx = this.px -x;
+        double dy = this.py -y;
+        return Math.sqrt(dx*dx+dy*dy);
+        
+    }
 
     /**
      * @return the id

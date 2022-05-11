@@ -20,7 +20,7 @@ public class Test {
     
    
     Treillis t = new Treillis();
-    t = Treillis.treilliTest();
+  //  t = Treillis.treilliTest();
     ArrayList<Barre> barrreQuiCasse = new ArrayList();
     barrreQuiCasse = t.barreCasse(t);
         System.out.println(barrreQuiCasse.get(0));

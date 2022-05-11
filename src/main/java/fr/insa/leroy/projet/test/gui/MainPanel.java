@@ -27,9 +27,8 @@ public class MainPanel extends BorderPane {
         this.model = model;
         this.control = new Controleur(this);
         
-        
         this.outilsTop = new InterfaceH();
-        this.outilsLeft = new InterfaceL();
+        this.outilsLeft = new InterfaceL(this);
         this.dessin = new Dessin(this);
         
         this.setTop(this.outilsTop);
@@ -40,7 +39,9 @@ public class MainPanel extends BorderPane {
        
        
     }
-
+    public void redrawAll(){
+        this.dessin.redrawAll();
+    }
     /**
      * @return the model
      */
@@ -50,4 +51,7 @@ public class MainPanel extends BorderPane {
      public Controleur getControleur() {
         return control;
     }
+    public InterfaceL getoutilsLeft(){
+    return outilsLeft;
+} 
 }

@@ -6,71 +6,106 @@ package fr.insa.leroy.projet.test.gui;
 
 import fr.insa.leroy.projet.test.Barre;
 import fr.insa.leroy.projet.test.Noeud;
-import fr.insa.leroy.projet.test.NoeudAppui;
-import fr.insa.leroy.projet.test.NoeudAppuiSimple;
-import fr.insa.leroy.projet.test.Treillis;
-import java.util.List;
-import javafx.event.ActionEvent;
+import java.util.Optional;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+import javafx.scene.paint.Color;
 
 /**
  *
  * @author Elève
  */
 public class Controleur {
-
-    private MainPanel vue;
-    private InterfaceL essai;
-    private List<Barre> selection;
-    private int etat;
-    private Stage stage;
-    private Dessin monVue;
-    private Barre segmentencours;
-
-    public Controleur(MainPanel vue) {
-        this.vue = vue;
-        this.changetat(30);
-
+    private MainPanel main;
+    private Noeud noeudSelect;
+    public enum Etat { SELECT, NOEUD, BARRE1, BARRE2 }
+    
+    private Etat etat;
+    
+    public Controleur(MainPanel main) {
+        this.main = main;
+        this.etat = Etat.SELECT;
     }
-
-    public void changetat(int nouvelEtat) {
-        if (nouvelEtat == 20) {
-            this.essai.getNoeudsimple().setSelected(true);
-            this.selection.clear();
-            this.segmentencours = null;
-          //  this.vue.getbGrouper().setDisable(true);
-            this.monVue.redrawAll();
-
+    
+    public void clicDansDessin(MouseEvent t) {
+        Noeud n;
+        switch (this.etat) {
+            case NOEUD:
+                //n = new NoeudSimple(t.get), t.getY());
+                n = this.main.getModel().noeudPlusProche(t.getX(), t.getY(), 5);
+                boolean creerNoeud = n==null;
+                NoeudDialog dialog = new NoeudDialog(n, t);
+                Optional<Noeud> p = dialog.showAndWait();
+                if (p.isPresent()){
+                    if (creerNoeud) {
+                        n = p.get();
+                        this.main.getModel().ajouteNoeud(n);
+                    } else {
+                        n.setPx(p.get().getPx());
+                        n.setPy(p.get().getPy());
+                        n.setForce(p.get().getForce());
+                    }
+                    //this.ChangerEtat(Etat.SELECT);
+                }
+                break;
+            case SELECT:
+                n = this.main.getModel().noeudPlusProche(t.getX(), t.getY(), 5);
+                if (n != null){
+                    if (noeudSelect != null)
+                     //   noeudSelect.setColor(Color.BLACK);
+                    noeudSelect = n;
+                   // noeudSelect.setColor(Color.RED);
+                } else {
+                    if (noeudSelect != null){
+                      //  noeudSelect.setColor(Color.BLACK);
+                        noeudSelect = null;
+                    }
+                }
+                break;
+            case BARRE1:
+                n = this.main.getModel().noeudPlusProche(t.getX(), t.getY(), 5);
+                if (n != null){
+                    if (noeudSelect != null)
+                       // noeudSelect.setColor(Color.BLACK);
+                        System.out.println("Test"); 
+                    noeudSelect = n;
+                   // noeudSelect.setColor(Color.RED);
+                    this.ChangerEtat(Etat.BARRE2);
+                }
+                break;
+            case BARRE2:
+                n = this.main.getModel().noeudPlusProche(t.getX(), t.getY(), 5);
+                if (n != null){
+                    this.main.getModel().ajouteBarre(new Barre(this.noeudSelect, n));
+                   // this.noeudSelect.setColor(Color.BLACK);
+                    this.noeudSelect = null;
+                    this.ChangerEtat(Etat.SELECT);
+                }
+                break;
+            default:
+                throw new AssertionError();
         }
-
     }
-
-    public void clikdanslazone(MouseEvent t) {
-        if (this.etat == 20) {
-            double px = t.getX();
-            double py = t.getY();
-            Treillis model = this.vue.getModel();
-       //     model.ajouteNoeud(new NoeudAppuiSimple(new Point));
-           
-
+    
+    public void ChangerEtat(Etat nouvelEtat){
+        switch (nouvelEtat) {
+            case SELECT:
+                this.etat = nouvelEtat;
+                this.main.getoutilsLeft().getNoeudDou().setSelected(true);
+                break;
+            case NOEUD:
+                this.etat = nouvelEtat;
+                this.main.getoutilsLeft().getNoeudsimple().setSelected(true);
+                break;
+            case BARRE1:
+                this.etat = nouvelEtat;
+                break;
+            case BARRE2:
+                this.etat = nouvelEtat;
+                break;
+            default:
+                throw new AssertionError();
         }
+        this.main.redrawAll();
     }
-
-    public void boutonNoeudSimple(ActionEvent t) {
-        this.changetat(20);
-    }
-
-    public void boutonNoeuddouble(ActionEvent t) {
-        this.changetat(30);
-    }
-
-    public void boutonBarre(ActionEvent t) {
-        this.changetat(40);
-    }
-//        public void zoomDouble() {
-//        this.vue.setZoneModelVue(this.vue.getZoneModelVue().scale(0.5));
-//        this.vue.redrawAll();
-// 
-
 }
+

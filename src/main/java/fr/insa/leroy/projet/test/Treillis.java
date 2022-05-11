@@ -4,12 +4,12 @@
  */
 package fr.insa.leroy.projet.test;
 
-import fr.insa.leroy.projet.test.gui.Dessin;
 import java.io.BufferedWriter;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.Group;
 
 /**
  *
@@ -34,7 +34,7 @@ public class Treillis {
         this.getBarres().add(b);
     }
 
-    public static Treillis treilliTest() {
+  /*  public static Treillis treilliTest() {
         Treillis res;
         res = new Treillis();
         ArrayList<Barre> barreDebut = new ArrayList();
@@ -54,7 +54,7 @@ public class Treillis {
         return res;
         
     }
-
+*/
     /**
      * @return the noeuds
      */
@@ -319,4 +319,38 @@ public class Treillis {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public Group dessine() {
+        Group g = new Group();
+        for (int i=0; i < this.noeuds.size(); i++) {
+            g.getChildren().add(this.noeuds.get(i).dessine());
+        }
+        for (int i=0; i < this.barres.size(); i++) {
+            g.getChildren().add(this.barres.get(i).dessine());
+        }
+        return g;
+    }
+    
+    
+    
+    public Noeud noeudPlusProche(double x, double y, double distMax) {
+        if (this.noeuds.isEmpty())
+            return null;
+        else {
+            Noeud nmin = this.noeuds.get(0);
+            double distmin = nmin.distance(x, y);
+            for (int i=1; i < this.noeuds.size(); i++){
+                Noeud n = this.noeuds.get(i);
+                double dist = n.distance(x, y);
+                if (dist < distmin){
+                    distmin = dist;
+                    nmin = n;
+                }
+            }
+            if (distmin <= distMax){
+                return nmin;
+            } else {
+                return null;
+            }
+        }
+    }
 }

@@ -32,31 +32,20 @@ public class Dessin extends Pane{
         this.setClip(clip);
         this.main = main;
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
-//        this.test.setOnMouseClicked((t) -> {
-//            Controleur control = this.main.getControleur();
-//            control.clikdanslazone(t);
-//        });
+      this.setOnMouseClicked((t) -> {
+            this.main.getControleur().clicDansDessin(t);
+            this.redrawAll();
+        });
         this.redrawAll();
     }
     
     public void redrawAll() {
         this.getChildren().clear();
-       
+        this.getChildren().add(this.main.getModel().dessine());
         
-        Treillis model = this.main.getModel();
-        for(int i = 0 ; i < model.getNoeuds().size() ; i ++) {
-            Noeud cur = model.getNoeuds().get(i);
-            Group rep = cur.dessine();
-           // Ellipse rep = new Ellipse(cur.getPx(), cur.getPy(), 5, 5);
-            
-            this.getChildren().add(rep);
-        }  
-        for (int j =0; j < model.getBarres().size() ; j++){
-            Barre bebe = model.getBarres().get(j);
-            Group lol = bebe.dessine();
-            this.getChildren().add(lol);
+        
    
-        }
+        
        
        
     

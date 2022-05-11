@@ -31,9 +31,10 @@ public class InterfaceL extends VBox {
     private RadioButton noeudDou;
     private Controleur controle;
     private Noeud noeudPrecedent;
+    private MainPanel main;
 
-    public InterfaceL() {
-
+    public InterfaceL(MainPanel panel) {
+        this.main = panel;
         this.noeudPrecedent = null;
         this.texte = new Text("Les Noeuds :");
         texte.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
@@ -43,12 +44,13 @@ public class InterfaceL extends VBox {
         this.noeudsimple = new RadioButton("Noeud Simple");
         this.noeudsimple.setOnAction((t) -> {
             System.out.println("Noeud Simple");
-            this.controle.boutonNoeudSimple(t);
+            this.main.getControleur().ChangerEtat(Controleur.Etat.NOEUD);
+           
         });
 
         this.noeudDou = new RadioButton("Noeud Double");
         this.noeudDou.setOnAction((t) -> {
-            this.controle.boutonNoeuddouble(t);
+           
         });
 
         this.Tas = new Text("Barre :");
@@ -59,6 +61,8 @@ public class InterfaceL extends VBox {
         this.bBarre = new RadioButton("Barre");
         this.bBarre.setOnAction((t) -> {
             System.out.println("Barre");
+         this.main.getControleur().ChangerEtat(Controleur.Etat.BARRE1);
+               
         });
         ToggleGroup gBoutons = new ToggleGroup();
         this.noeudsimple.setToggleGroup(gBoutons);
@@ -98,6 +102,20 @@ public class InterfaceL extends VBox {
      */
     public ChoiceBox getMenuderoule() {
         return menuderoule;
+    }
+
+    /**
+     * @return the noeudDou
+     */
+    public RadioButton getNoeudDou() {
+        return noeudDou;
+    }
+
+    /**
+     * @return the noeudPrecedent
+     */
+    public Noeud getNoeudPrecedent() {
+        return noeudPrecedent;
     }
 
 }

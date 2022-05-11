@@ -40,7 +40,7 @@ public class Vecteur2D {
         this.vy = vy;
     }
     
-     Vecteur2D (double vx, double vy){
+     public Vecteur2D (double vx, double vy){
       this.vx = vx;
       this.vy = vy;
     }
