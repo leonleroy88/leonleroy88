@@ -17,136 +17,136 @@ import javafx.scene.Group;
  */
 public class Treillis {
 
-    private List<Noeud> noeuds;
-    private List<Barre> barres;
+    //Attributs  
+    private ArrayList<Barre> barres = new ArrayList();
+    private ArrayList<Noeud> noeuds = new ArrayList();
 
-
-    public Treillis() {
-        this.noeuds = new ArrayList<Noeud>();
-        this.barres = new ArrayList<>();
+    // Encapsulation
+    public ArrayList<Barre> getBarres() {
+        return barres;
     }
+//On ne va pas modifier toutes les barres d'un coup
+//    public void setBarres(ArrayList<Barre> barres) {
+//        this.barres = barres;
+//    }
 
-    public void ajouteNoeud(Noeud n) {
-        this.getNoeuds().add(n);
-    }
-
-    public void ajouteBarre(Barre b) {
-        this.getBarres().add(b);
-    }
-
-    public static Treillis treilliTest() {
-        Treillis res;
-        res = new Treillis();
-        ArrayList<Barre> barreDebut = new ArrayList();
-        NoeudAppuiDouble n1 = new NoeudAppuiDouble(1, 0, 200, new Vecteur2D(0, 0), barreDebut, barreDebut);
-        NoeudSimple n2 = new NoeudSimple( 100, 100, new Vecteur2D(0, -1000));
-        NoeudAppuiSimple n3 = new NoeudAppuiSimple(3, 0, 0, new Vecteur2D(0, 0), 0, barreDebut, barreDebut);
-        Barre b1 = new Barre(1,n2, n3,0,0);
-        Barre b2 = new Barre(2,n2, n1,0,0);
-        Barre b3 = new Barre(3,n3, n1,0,0);
-        res.ajouteBarre(b1);
-        res.ajouteBarre(b3);
-        res.ajouteBarre(b2);
-        res.ajouteNoeud(n1);
-        res.ajouteNoeud(n2);
-        res.ajouteNoeud(n3);
-        System.out.println("Barre "+ n1.getBarreDebut().size());
-        return res;
-        
-    }
-
-    /**
-     * @return the noeuds
-     */
-    public List<Noeud> getNoeuds() {
+    public ArrayList<Noeud> getNoeuds() {
         return noeuds;
     }
 
-    /**
-     * @return the barres
-     */
-    public List<Barre> getBarres() {
-        return barres;
+//    public void setgetNoeuds(ArrayList<Noeud> noeuds) {
+//        this.noeuds = noeuds;
+//    }
+    //Constructeur
+    public Treillis() {
+        this.barres = new ArrayList<>();
+        this.noeuds = new ArrayList<>();
     }
 
     //Methodes    
-    public static int maxIdNoeud(Treillis t) {
+    public static Treillis treillisTest() {
+        Treillis test;
+        test = new Treillis();
+        NoeudAppuiDouble n1 = new NoeudAppuiDouble(1,200,0,new Vecteur2D(0, 0));
+        NoeudSimple n2 = new NoeudSimple(2,100,100,new Vecteur2D(0, -1000));
+        NoeudAppuiSimple n3 = new NoeudAppuiSimple(3,0,0,new Vecteur2D(0, 0),0);
+        Barre b1 = new Barre(0, n2, n3, 0, 0, 0);
+        Barre b2 = new Barre(1, n2, n1, 0, 0, 0);
+        Barre b3 = new Barre(2, n3, n1, 0, 0, 0);
+        test.ajouteBarre(b1);
+        test.ajouteBarre(b2);
+        test.ajouteBarre(b3);
+        test.ajouteNoeud(n1);
+        test.ajouteNoeud(n2);
+        test.ajouteNoeud(n3);
+        return test;
+    }
+
+    public  int maxIdNoeud() {
         int max = 0;
-        if (t.noeuds.size() != 0) {
-            for (int i = 0; i < t.noeuds.size(); i++) {
-                if (t.noeuds.get(i).getId() >= max) {
-                    max = t.noeuds.get(i).getId();
+        if (this.noeuds.size() != 0) {
+            for (int i = 0; i < this.noeuds.size(); i++) {
+                if (this.noeuds.get(i).getId() >= max) {
+                    max = this.noeuds.get(i).getId();
                 }
             }
         }
         return max;
     }
 
-    public static int maxIdBarre(Treillis t) {
+    public  int maxIdBarre() {
         int max = 0;
-        if (t.barres.size() != 0) {
-            for (int i = 0; i < t.barres.size(); i++) {
-                if (t.barres.get(i).getIdentificateur() >= max) {
-                    max = t.barres.get(i).getIdentificateur();
+        if (this.barres.size() != 0) {
+            for (int i = 0; i < this.barres.size(); i++) {
+                if (this.barres.get(i).getIdentificateur()>= max) {
+                    max = this.barres.get(i).getIdentificateur();
                 }
             }
         }
         return max;
     }
 
-    public static void ajouteNoeud(Noeud n, Treillis t) {
-        int i = 0;
-        while (t.noeuds.get(i) != n && i < t.noeuds.size()) {
-            i++;
-        }
-        if (i != t.noeuds.size() - 1) {
-            throw new Error("Ce noeud est deja dans le treillis");
+    public void ajouteNoeud(Noeud n) {
+        if (this.noeuds.size() == 0) {
+            n.setId(1);
+            this.noeuds.add(n);
         } else {
-            n.setId(maxIdNoeud(t) + 1);
-            t.noeuds.add(n);
+            int i = 0;
+            while (i < this.noeuds.size() && this.noeuds.get(i) != n) {
+                i++;
+            }
+            if (i != this.noeuds.size()) {
+                throw new Error("Ce noeud est deja dans le treillis");
+            } else {
+                n.setId(this.maxIdNoeud() + 1);
+                this.noeuds.add(n);
+            }
         }
     }
 
-    public static void ajouteBarre(Barre b, Treillis t) {
+    public  void ajouteBarre(Barre b) {
         int i = 0;
-        while (t.barres.get(i) != b && i < t.barres.size()) {
-            i++;
-        }
-        if (i != t.barres.size() - 1) {
-            throw new Error("Cette barre est deja dans le treillis");
+        if (this.barres.size() == 0) {
+            b.setIdentificateur(0);
+            this.barres.add(b);
         } else {
-            ajouteNoeud(b.getNoeudDebut(), t);
-            ajouteNoeud(b.getNoeudArrivee(), t);
-            b.setIdentificateur(maxIdBarre(t) + 1);
-            t.barres.add(b);
+            while ((this.barres.get(i) != b) && (i < this.barres.size() - 1)) {
+                i++;
+            }
+            if (i != this.barres.size() - 1) {
+                throw new Error("Cette barre est deja dans le treillis");
+            } else {
+                b.setIdentificateur(this.maxIdBarre() + 1);
+                this.barres.add(b);
+            }
         }
     }
 
-    public static ArrayList<Barre> barreCasse(Treillis t) {
+    public  ArrayList<Barre> barresCassees() {
         //Création de la matrice des equations
         // dimention inconnues horizontal nbr var et bertical nbrvar+1
         int nombreequation;
-        nombreequation = t.barres.size();
-        for (int i = 0; i < t.noeuds.size(); i++) {
-            nombreequation = nombreequation + Noeud.nbrInconnues(t.noeuds.get(i));
+        nombreequation = this.barres.size();
+        for (int i = 0; i < this.noeuds.size(); i++) {
+            nombreequation = nombreequation + this.noeuds.get(i).nbrInconnues();
         }
 
         double[][] Equation;
-        Equation = new double[t.noeuds.size() * 2][nombreequation + 1];
-        for (int i = 0; i < nombreequation; i++) {
-            for (int j = 0; j < nombreequation + 1; j++) {
+        Equation = new double[this.noeuds.size() * 2][nombreequation];
+        for (int i = 0; i < this.noeuds.size() * 2; i++) {
+            for (int j = 0; j < nombreequation; j++) {
                 Equation[i][j] = 0;
             }
         }
 
         //Creation d'une liste contenant les inconnues
         ArrayList<String> Inconnues = new ArrayList();
-        for (int j = 0; j < t.barres.size(); j++) {
+        for (int j = 0; j < this.barres.size(); j++) {
             Inconnues.add("T" + j);
         }
-        for (int y = 0; y < t.noeuds.size(); y++) {
-            if (t.noeuds.get(y) instanceof NoeudSimple == false) {
-                if (t.noeuds.get(y) instanceof NoeudAppuiSimple == true) {
+        for (int y = 0; y < this.noeuds.size(); y++) {
+            if (this.noeuds.get(y) instanceof NoeudSimple == false) {
+                if (this.noeuds.get(y) instanceof NoeudAppuiSimple == true) {
                     Inconnues.add("R" + y);
 
                 } else {
@@ -158,82 +158,108 @@ public class Treillis {
 
         //Afficher les inconnues
         for (int i = 0; i < Inconnues.size(); i++) {
-            System.out.print(Inconnues.get(i));
-
+            System.out.print(Inconnues.get(i)+" ");
         }
+        System.out.println(" ");
 
-        //Creation de la matrice à résoudre
-
-        System.out.println(" taille "+Equation.length);
+        //Creation de la matrice à résoudre A et du vecteur colonne B dans AX=B
         //Remplissage Réactions
+        double[] B=new double[this.noeuds.size() * 2];
         int lig = 0;
-        for (int i = 0; i < t.noeuds.size() - 1; i++) {
-            Noeud n = t.noeuds.get(i);
-            System.out.println(" cest lif" +lig);
+        for (int i = 0; i < this.noeuds.size(); i++) {
+            Noeud n = this.noeuds.get(i);
             if (n instanceof NoeudSimple) {
             } else {
                 if (n instanceof NoeudAppuiDouble) {
-                    int num = Treillis.numVar(Inconnues, n, t);
-                    Equation[lig][num-1] = 1;
-                    System.out.println("Cest num" + num);
-                    Equation[lig + 1][num] = 1;
-
+                    int num = this.numVar(Inconnues, n);
+                    Equation[lig][num] = 1;
+                    Equation[lig + 1][num + 1] = 1;
                 } else {
-                    int num = Treillis.numVar(Inconnues, n, t);
-                    //TODO cos? et résoudre problème
-                    Equation[lig][num-1] = cos(0);
-                    Equation[lig + 1][num] = sin(0);
-                    // Equation[lig][num]=cos(n.getNormale);
-                    //Equation[lig+1][num]=sin(n.getNormale);
+                    int num = this.numVar(Inconnues, n);
+                    NoeudAppuiSimple ns = (NoeudAppuiSimple) n;
+                    double angle=ns.getNormale();
+                    Equation[lig][num] = cos(angle);
+                    Equation[lig + 1][num] = sin(angle);
                 }
             }
             //Equation selon x pour les tensions dans les barres
-           // System.out.println("nbr barre inci "+Noeud.barresIncidentes(n).size() );
-            System.out.println("bare inci" + Noeud.barresIncidentes(n).size());
-            for (int j = 0; j < Noeud.barresIncidentes(n).size(); j++) {
-                Barre b = Noeud.barresIncidentes(n).get(j);
-                double angle = Barre.Angle(n, b);
-                int col = Treillis.numVar(Inconnues, b, t);
-                Equation[lig][col-1] = cos(angle);
-                Equation[lig][col-1] = n.getForce().getVx();
+            for (int j = 0; j < n.barresIncidentes().size(); j++) {
+                Barre b = n.barresIncidentes().get(j);
+                double angle = b.Angle(n);
+                int col = this.numVar(Inconnues, b);
+                Equation[lig][col] = cos(angle);
+                B[lig] = n.getForce().getVx();
             }
             lig++;
             //Equation selon y pour les tensions dans les barres
-            for (int j = 0; j < Noeud.barresIncidentes(n).size(); j++) {
-                Barre b = Noeud.barresIncidentes(n).get(j);
-                double angle;
-                angle = Barre.Angle(n, b);
-                int col = Treillis.numVar(Inconnues, b, t);
-                Equation[lig][col-1] = sin(angle);
-                Equation[lig][col-1] = n.getForce().getVy();
-                System.out.println(" FORCE " +n.getForce().getVy());
+            for (int j = 0; j < n.barresIncidentes().size(); j++) {
+                Barre b = n.barresIncidentes().get(j);
+                double angle = b.Angle(n);
+                int col = this.numVar(Inconnues, b);
+                Equation[lig][col] = sin(angle);
+                B[lig] = n.getForce().getVy();
+
             }
             lig++;
         }
+        System.out.println(" ");
         for (int i = 0; i < nombreequation; i++) {
-            for (int j = 0; j < nombreequation + 1; j++) {
-                System.out.print(Equation[i][j]+" ");
+            for (int j = 0; j < nombreequation; j++) {
+                System.out.print(Equation[i][j] + " | ");
             }
             System.out.println(" ");
         }
+        for (int j = 0; j < nombreequation; j++) {
+                System.out.print(B[j] + " | ");
+        }
         //Resolution de la matrice
-        double[] v = Treillis.resoudreMatrice(Equation);
+        if (this.noeuds.size() * 2 != nombreequation){
+              throw new Error("Le système n'est pas soluble");
+        }
+//        Determinant d= new Determinant(Equation,Equation.length);
+//        double[][]inverse=transpose(d.inverse(Equation));
+//        double[][] inverse=inverse(Equation);
+        double[] v=new double[nombreequation];
+        for(int k=0;k<nombreequation;k++){
+            for(int l=0;l<nombreequation;l++){
+//                System.out.print(inverse[k][l]+"   ");
+            }
+            System.out.print(" ");
+        }
+        for(int k=0;k<nombreequation;k++){
+            for(int l=0;l<nombreequation;l++){
+//                v[k]=v[k]+inverse[k][l]*B[k];
+            }
+        }
+
+        double[][]produit=new double[nombreequation][nombreequation];
+        for(int i=0; i<nombreequation; i++){
+            for(int j=0; j<nombreequation; j++){
+            produit[i][j] = 0;    
+                for(int k=0; k<2 ;k++) {  
+//                    produit[i][j] += Equation[i][k] * inverse[k][j];    
+                }
+//            System.out.print(produit[i][j]+" ");
+            }
+            System.out.println();
+        }  
+        
         for (int in = 0; in < v.length; in++) {
-            System.out.print(v[in] + " | ");
+            System.out.println(Inconnues.get(in)+" "+v[in]);
         }
         //TODO gérer si c'est une compression ou une traction
         //Trouver les barres qui risquent de casser
         ArrayList<Barre> fragile = new ArrayList();
-        for (int k = 0; k < t.barres.size(); k++) {
-            if (v[k] > t.barres.get(k).getCompression()) {
-                fragile.add(t.barres.get(k));
+        for (int k = 0; k < this.barres.size(); k++) {
+            if (v[k] > this.barres.get(k).getCompression()) {
+                fragile.add(this.barres.get(k));
             }
         }
         return fragile;
     }
 
-    public static int numVar(ArrayList<String> inconnues, Barre b, Treillis t) {
-        int pos = t.barres.indexOf(b);
+    public int numVar(ArrayList<String> inconnues, Barre b) {
+        int pos = this.barres.indexOf(b);
         int i = 0;
         while (i < inconnues.size() && !inconnues.get(i).equals("T" + pos)) {
             i++;
@@ -241,84 +267,31 @@ public class Treillis {
         if (i == inconnues.size() - 1) {
             throw new Error("Il n'y a pas d'inconnues suivant cette barre");
         } else {
-            return i-1;
+            return i;
         }
     }
 
-    public static int numVar(ArrayList<String> inconnues, Noeud n, Treillis t) {
-        int pos = t.barres.indexOf(n);
+    public int numVar(ArrayList<String> inconnues, Noeud n) {
+        int pos = this.noeuds.indexOf(n);
         int i = 0;
         while (i < inconnues.size() && !inconnues.get(i).contains("R" + pos)) {
             i++;
         }
-        if (i == inconnues.size() - 1) {
+        if (i == inconnues.size()) {
             throw new Error("Il n'y a pas d'inconnues suivant cette barre");
         } else {
-            return i-1;
+            return i;
         }
     }
-
-    //Methodes permettant d'effectuer le pivot de gauss pour résoudre la matrice
-    static void permutation(int l, double[][] a) {
-        int n = a[a.length - 1].length;
-        double aux;
-        int ll = l;
-        while (a[ll][l] == 0.0) {
-            ll++;
+    public static double[][] transpose (double[][] m){
+        double[][] transpose=new double[m.length][m[1].length];
+        for(int i=0;i<3;i++){    
+            for(int j=0;j<3;j++){    
+                transpose[i][j]=m[j][i];  
+            }    
         }
-        for (int i = l; i < n; i++) {
-            aux = a[l][i];
-            a[l][i] = a[ll][i];
-            a[ll][i] = aux;
-        }
-        aux = a[a.length - 1][l];
-        a[a.length - 1][l] = a[a.length - 1][ll];
-        a[a.length - 1][ll] = aux;
+        return transpose;
     }
-
-    static void transformation(double[][] a) {
-        int n = a[a.length - 1].length;
-        for (int i = 1; i < n; i++) {
-            if (a[i - 1][i - 1] == 0.0) {
-                permutation(i - 1, a);
-            }
-            for (int j = i; j < n; j++) {
-                double facteur = a[j][i - 1] / a[i - 1][i - 1];
-                for (int k = i - 1; k < n; k++) {
-                    a[j][k] = a[j][k] - a[i - 1][k] * facteur;
-                }
-                a[a.length - 1][j] = a[a.length - 1][j] - a[a.length - 1][i - 1] * facteur;
-            }
-        }
-    }
-
-    static double[] extraction(double[][] a) {
-        int n = a[a.length - 1].length;
-        double[] v = new double[n];
-        v[n - 1] = a[a.length - 1][n - 1] / a[n - 1][n - 1];
-        for (int i = n - 2; i >= 0; i--) {
-            v[i] = a[a.length - 1][i];
-            for (int j = n - 1; j > i; j--) {
-                v[i] = v[i] - v[j] * a[i][j];
-            }
-            v[i] = v[i] / a[i][i];
-        }
-        return v;
-    }
-
-    static double[] resolution(double[][] a) {
-        transformation(a);
-        return extraction(a);
-    }
-
-    public static double[] resoudreMatrice(double[][] m) {
-        return resolution(m);
-    }
-
-    public void save(BufferedWriter bout) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     public Group dessine() {
         Group g = new Group();
         for (int i=0; i < this.noeuds.size(); i++) {
@@ -329,9 +302,14 @@ public class Treillis {
         }
         return g;
     }
-    
-    
-    
+//    public static double[][] inverse(double[][] arg0) {
+//   //     Matrix mat = new Matriarg0);
+//    return mat.inverse().getArray();
+//    }
+
+    public void save(BufferedWriter bout) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     public Noeud noeudPlusProche(double x, double y, double distMax) {
         if (this.noeuds.isEmpty())
             return null;

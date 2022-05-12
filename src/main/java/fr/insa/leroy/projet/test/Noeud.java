@@ -21,13 +21,13 @@ public abstract class Noeud {
     private ArrayList<Barre> barreDebut = new ArrayList();
     private Color color;
     
-    public Noeud(int ID, double PX, double PY, Vecteur2D V, ArrayList<Barre> barreArrivee, ArrayList<Barre> barreDebut){
+    public Noeud(int ID, double PX, double PY, Vecteur2D V){
         this.id=ID;
         this.px=PX;
         this.py=PY;
         this.force=V;     
-        this.barreArrivee = barreArrivee;
-        this.barreDebut = barreDebut;
+        this.barreArrivee = new ArrayList<>();
+        this.barreDebut = new ArrayList<>();
     }
     public Noeud(double PX, double PY, Vecteur2D V){
         this.id=-1;
@@ -89,24 +89,25 @@ public abstract class Noeud {
         this.py = py;
     }
     
+    
     public void demandePx(){
-        System.out.println(" quelle est la coordonnée px");
+        System.out.println(" quelle est la coordonnée px ?");
        double pX=Lire.d();  
         this.px=pX  ;
     }
     public void demandePy(){
-        System.out.println(" quelle est la coordonnée py");
+        System.out.println(" quelle est la coordonnée py ?");
         double pY=Lire.d();
         this.py=pY;
     }
    
     public abstract Group dessine();
     
-    public static int nbrInconnues(Noeud n){
-        if ( n instanceof NoeudAppuiSimple){
+    public int nbrInconnues(){
+        if ( this instanceof NoeudAppuiSimple){
             return 1;
         }
-        else if (n instanceof NoeudAppuiDouble){
+        else if (this instanceof NoeudAppuiDouble){
             return 2;
         }
         else 
@@ -126,17 +127,16 @@ public abstract class Noeud {
     public ArrayList<Barre> getBarreDebut() {
         return barreDebut;
     }
-    public static ArrayList<Barre> barresIncidentes(Noeud n){
+    public ArrayList<Barre> barresIncidentes(){
         ArrayList<Barre> barresIncidentes = new ArrayList();
-        barresIncidentes.addAll(n.barreArrivee);
-        barresIncidentes.addAll(n.barreDebut);
+        barresIncidentes.addAll(this.barreArrivee);
+        barresIncidentes.addAll(this.barreDebut);
         return barresIncidentes;
     }
     public double distance(double x , double y){
         double dx = this.px -x;
         double dy = this.py -y;
-        return Math.sqrt(dx*dx+dy*dy);
-        
+        return Math.sqrt(dx*dx+dy*dy);   
     }
 
     /**

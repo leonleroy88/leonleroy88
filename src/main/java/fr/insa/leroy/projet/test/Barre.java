@@ -20,7 +20,7 @@ public class Barre {
     private double compression;
     private double cout;
 
-    public Barre (int id, Noeud debut, Noeud fin, double compression, double traction){
+    public Barre (int id, Noeud debut, Noeud fin, double compression, double traction, double cout){
         this.identificateur = id;
         this.noeudDebut = debut;
         this.noeudArrivee = fin;
@@ -28,11 +28,12 @@ public class Barre {
         this.noeudArrivee.getBarreArrivee().add(this);
         this.compression = compression;
         this.traction = traction;
+        this.cout = cout;
         
     } 
     
     public Barre ( Noeud debut, Noeud fin){
-        this(-1, debut, fin, 0, 0);
+        this(-1, debut, fin, 0, 0, 0);
         
     } 
     
@@ -41,33 +42,32 @@ public class Barre {
         b = new Barre(noeudD, noeudF);
     }*/
     
-////    Méthode qui renvoie le noeud opposé au noeud rentré
-   public static Noeud noeudOppose (Barre b, Noeud n) {
-       Noeud nopp;
-       if (n!=b.noeudArrivee && n!=b.getNoeudDebut()){
+////    Méthode qui renvoie le noeud opposé au noeud entré
+   public Noeud noeudOppose (Noeud n) {
+       Noeud oppose;
+       if (n!=this.noeudArrivee && n!=this.getNoeudDebut()){
            throw new Error ("Le noeud entré ne correspond pas à la bare entrée");
        }
-       if (n==b.noeudArrivee){
-           nopp=b.noeudDebut;
+       if (n==this.noeudArrivee){
+           oppose=this.noeudDebut;
        }
-       else nopp=b.noeudArrivee;
-       return nopp;
+       else oppose=this.noeudArrivee;
+       return oppose;
    }
     
 ////    Méthode qui calcule l'angle
-    public static double Angle (Noeud n, Barre b) {
+    public double Angle (Noeud n) {
         double y1, y2, x1, x2;
-        Noeud nopp=noeudOppose(b,n);
+        Noeud nopp=this.noeudOppose(n);
 //        Si le noeud entré est le noeud de départ, n récupère les coordonées du neoud d'arrivée. Et inversement.
         x1 = n.getPx();
         y1 = n.getPy();
         x2 = nopp.getPx();
         y2 = nopp.getPy();
-        
-        
         double angle = atan((y2-y1)/(x2-x1));
         return angle;
     }    
+    
     public Group dessine(){
         Line res = new Line(this.getNoeudDebut().getPx(), this.getNoeudDebut().getPy(), this.getNoeudArrivee().getPx(), this.getNoeudArrivee().getPy());
         Group g = new Group(res);
@@ -148,5 +148,12 @@ public class Barre {
         this.compression = compression;
     }
 
+    public double getCout(double cout){
+        return cout;
+    }
+    
+    public void setCOut(double cout){
+        this.cout = cout;
+    }
 }
     

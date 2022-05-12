@@ -16,9 +16,9 @@ public class  NoeudAppuiSimple extends NoeudAppui {
     private double normale;
     
     
-    public NoeudAppuiSimple(int id, double PX, double PY, Vecteur2D V, double normale, ArrayList<Barre> barresDepart, ArrayList<Barre> barresArrive)
+    public NoeudAppuiSimple(int id, double PX, double PY, Vecteur2D V, double normale)
     {
-        super(id,PX, PY, V, barresArrive, barresDepart);
+        super(id,PX, PY, V);
         this.px=PX;
         this.py=PY;
         this.normale = normale;

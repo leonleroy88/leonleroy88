@@ -15,8 +15,8 @@ import javafx.scene.shape.Rectangle;
 // Nooeud appuisimple ou double pas de force
 public class NoeudAppuiDouble extends NoeudAppui { 
 
-    public NoeudAppuiDouble(int id ,double PX, double PY, Vecteur2D V, ArrayList<Barre> barreArrivee, ArrayList<Barre> barreDebut) {
-        super(id,PX, PY, V, barreArrivee, barreDebut);
+    public NoeudAppuiDouble(int id ,double PX, double PY, Vecteur2D V) {
+        super(id,PX, PY, V);
         this.px=PX;
         this.py=PY;
     }

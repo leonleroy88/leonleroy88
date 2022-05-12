@@ -44,13 +44,12 @@ public class Vecteur2D {
       this.vx = vx;
       this.vy = vy;
     }
- 
      
-    
      void setvx(){
      System.out.println("Entrer la composante x");
      this.vx=Lire.d();
      }
+     
      void setvy(){
      System.out.println("Entrer la composante y");
      this.vy=Lire.d();

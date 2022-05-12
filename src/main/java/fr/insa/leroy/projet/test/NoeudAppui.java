@@ -12,8 +12,8 @@ import java.util.ArrayList;
  */
 public abstract class NoeudAppui extends Noeud {
 
-    public NoeudAppui(int id,double PX, double PY, Vecteur2D V, ArrayList<Barre> barreArrivee, ArrayList<Barre> barreDebut) {
-        super(id, PX, PY, V, barreDebut, barreArrivee);
+    public NoeudAppui(int id,double PX, double PY, Vecteur2D V) {
+        super(id, PX, PY, V);
         this.px=PX;
         this.py=PY;
     }

@@ -16,7 +16,7 @@ public class NoeudSimple extends Noeud {
     
     
     
-    public NoeudSimple( double PX, double PY, Vecteur2D V) {
+    public NoeudSimple(int id,double PX, double PY, Vecteur2D V) {
         super(PX, PY, V);
         this.px=PX;
         this.py=PY;

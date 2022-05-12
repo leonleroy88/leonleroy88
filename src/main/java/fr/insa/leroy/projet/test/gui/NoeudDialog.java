@@ -73,7 +73,7 @@ public class NoeudDialog extends Dialog<Noeud> {
                 } catch (NumberFormatException e){
                     return null;
                 }
-                return new NoeudSimple(px, py, new Vecteur2D(vx,vy));
+                return new NoeudSimple(0, px, py, new Vecteur2D(vx,vy));
             } else {
                 return null;
             }
