@@ -22,13 +22,14 @@ import javafx.stage.Stage;
  */
 public class InterfaceL extends VBox {
 
-    private RadioButton noeudsimple;
+    private BoutonIcone noeudsimple;
+    private BoutonIcone noeudADouble;
     private RadioButton bBarre;
     private ChoiceBox menuderoule;
     private Text texte;
     private Text Tas;
     private Stage stage;
-    private RadioButton noeudDou;
+    private BoutonIcone noeudDou;
     private Controleur controle;
     private Noeud noeudPrecedent;
     private MainPanel main;
@@ -36,23 +37,27 @@ public class InterfaceL extends VBox {
     public InterfaceL(MainPanel panel) {
         this.main = panel;
         this.noeudPrecedent = null;
-        this.texte = new Text("Les Noeuds :");
+        this.texte = new Text("Noeud Simple :");
         texte.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
         texte.setTextAlignment(TextAlignment.CENTER);
         this.getChildren().add(this.texte);
 
-        this.noeudsimple = new RadioButton("Noeud Simple");
+        this.noeudsimple = new BoutonIcone("icones/NoeudS.PNG",32,32);
         this.noeudsimple.setOnAction((t) -> {
             System.out.println("Noeud Simple");
             this.main.getControleur().ChangerEtat(Controleur.Etat.NOEUD);
            
         });
-
-        this.noeudDou = new RadioButton("Noeud AppuiSimple");
-        this.noeudDou.setOnAction((t) -> {
-           
+        this.getChildren().add(this.noeudsimple);
+        
+        this.noeudDou = new BoutonIcone("icones/Noeud Simple.PNG",32,32);
+        this.noeudDou.setOnAction((t) -> {  
         });
-
+        this.getChildren().add(this.noeudDou);
+        
+        this.noeudADouble = new BoutonIcone("icones/NoeudDouble.PNG",32,32);
+        this.getChildren().add(this.noeudADouble);
+        
         this.Tas = new Text("Barre :");
         Tas.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
         Tas.setTextAlignment(TextAlignment.CENTER);
@@ -64,29 +69,29 @@ public class InterfaceL extends VBox {
          this.main.getControleur().ChangerEtat(Controleur.Etat.BARRE1);
                
         });
-        ToggleGroup gBoutons = new ToggleGroup();
-        this.noeudsimple.setToggleGroup(gBoutons);
-        this.noeudDou.setToggleGroup(gBoutons);
-        this.bBarre.setToggleGroup(gBoutons);
-        this.bBarre.setSelected(true);
+        //ToggleGroup gBoutons = new ToggleGroup();
+        //this.noeudsimple.setToggleGroup(gBoutons);
+        //this.noeudDou.setToggleGroup(gBoutons);
+       // this.bBarre.setToggleGroup(gBoutons);
+      //  this.bBarre.setSelected(true);
 
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
         this.setSpacing(10);
-        this.getChildren().addAll(this.noeudsimple, this.noeudDou, this.Tas, this.bBarre);
+        this.getChildren().addAll(this.Tas, this.bBarre);
 
     }
 
     /**
      * @return the noeudsimple
      */
-    public RadioButton getNoeudsimple() {
+    public BoutonIcone getNoeudsimple() {
         return noeudsimple;
     }
 
     /**
      * @param noeudsimple the noeudsimple to set
      */
-    public void setNoeudsimple(RadioButton noeudsimple) {
+    public void setNoeudsimple(BoutonIcone noeudsimple) {
         this.noeudsimple = noeudsimple;
     }
 
@@ -107,7 +112,7 @@ public class InterfaceL extends VBox {
     /**
      * @return the noeudDou
      */
-    public RadioButton getNoeudDou() {
+    public BoutonIcone getNoeudDou() {
         return noeudDou;
     }
 

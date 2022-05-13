@@ -80,7 +80,7 @@ public class InterfaceH extends HBox {
         this.setSpacing(15);
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
         //this.bTranslateDroite = new BoutonIcone("icones/droite.png",32,32);
-        this.leon = new BoutonIcone("icones/okkk.PNG",32,32);
+        this.leon = new BoutonIcone("icones/allan.PNG",40,40);
         this.leon.setOnAction((t) -> {
             System.out.println("ICONES");
         });

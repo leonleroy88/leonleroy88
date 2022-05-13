@@ -66,7 +66,7 @@ public class Controleur {
                 if (n != null){
                     if (noeudSelect != null)
                         noeudSelect.setColor(Color.BLACK);
-                        System.out.println("Test"); 
+                        System.out.println("Test barre"); 
                     noeudSelect = n;
                         noeudSelect.setColor(Color.RED);
                     this.ChangerEtat(Etat.BARRE2);
@@ -90,11 +90,11 @@ public class Controleur {
         switch (nouvelEtat) {
             case SELECT:
                 this.etat = nouvelEtat;
-                this.main.getoutilsLeft().getNoeudDou().setSelected(true);
+                this.main.getoutilsLeft().getNoeudDou();
                 break;
             case NOEUD:
                 this.etat = nouvelEtat;
-                this.main.getoutilsLeft().getNoeudsimple().setSelected(true);
+                this.main.getoutilsLeft().getNoeudsimple();//setSelected(true)
                 break;
             case BARRE1:
                 this.etat = nouvelEtat;
