@@ -4,6 +4,7 @@
  */
 package fr.insa.leroy.projet.test;
 
+import fr.insa.leroy.projet.test.calcul.Matrix;
 import java.io.BufferedWriter;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
@@ -64,7 +65,7 @@ public class Treillis {
 
     public  int maxIdNoeud() {
         int max = 0;
-        if (this.noeuds.size() != 0) {
+        if (!this.noeuds.isEmpty()) {
             for (int i = 0; i < this.noeuds.size(); i++) {
                 if (this.noeuds.get(i).getId() >= max) {
                     max = this.noeuds.get(i).getId();
@@ -76,7 +77,7 @@ public class Treillis {
 
     public  int maxIdBarre() {
         int max = 0;
-        if (this.barres.size() != 0) {
+        if (!this.barres.isEmpty()) {
             for (int i = 0; i < this.barres.size(); i++) {
                 if (this.barres.get(i).getIdentificateur()>= max) {
                     max = this.barres.get(i).getIdentificateur();
@@ -87,7 +88,7 @@ public class Treillis {
     }
 
     public void ajouteNoeud(Noeud n) {
-        if (this.noeuds.size() == 0) {
+        if (this.noeuds.isEmpty()) {
             n.setId(1);
             this.noeuds.add(n);
         } else {
@@ -106,7 +107,7 @@ public class Treillis {
 
     public  void ajouteBarre(Barre b) {
         int i = 0;
-        if (this.barres.size() == 0) {
+        if (this.barres.isEmpty()) {
             b.setIdentificateur(0);
             this.barres.add(b);
         } else {
@@ -216,10 +217,12 @@ public class Treillis {
         if (this.noeuds.size() * 2 != nombreequation){
               throw new Error("Le système n'est pas soluble");
         }
+        
 //        Determinant d= new Determinant(Equation,Equation.length);
 //        double[][]inverse=transpose(d.inverse(Equation));
 //        double[][] inverse=inverse(Equation);
-        double[] v=new double[nombreequation];
+        double[] v;
+        v = Matrix.inverse(Equation, B);
         for(int k=0;k<nombreequation;k++){
             for(int l=0;l<nombreequation;l++){
 //                System.out.print(inverse[k][l]+"   ");

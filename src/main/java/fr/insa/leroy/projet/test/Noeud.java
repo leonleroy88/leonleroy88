@@ -19,7 +19,7 @@ public abstract class Noeud {
     private Vecteur2D force;
     private ArrayList<Barre> barreArrivee = new ArrayList();
     private ArrayList<Barre> barreDebut = new ArrayList();
-    private Color color;
+    private Color couleur;
     
     public Noeud(int ID, double PX, double PY, Vecteur2D V){
         this.id=ID;
@@ -33,14 +33,18 @@ public abstract class Noeud {
         this.id=-1;
         this.px=PX;
         this.py=PY;
-        this.force=V;      
+        this.force=V; 
+        this.barreArrivee = new ArrayList<>();
+        this.barreDebut = new ArrayList<>();
     }
     public Noeud(double PX, double PY){
         Vecteur2D V = new Vecteur2D(0.0,0.0);
         this.id=-1;
         this.px=PX;
         this.py=PY;
-        this.force=V;      
+        this.force=V;
+        this.barreArrivee = new ArrayList<>();
+        this.barreDebut = new ArrayList<>();
     }
    
  /*   public static Noeud entreeNoeud (int ID, double PX, double PY, Vecteur2D V){
@@ -72,7 +76,7 @@ public abstract class Noeud {
     
     @Override
      public String toString(){
-       return "Ton point : [id : "+this.getId() +" px:"+this.px+" py:"+this.py+" force:"+this.getForce().toString() ;
+       return "Point : [id : "+this.getId() +" px:"+this.px+" py:"+this.py+" force:"+this.getForce().toString() ;
     } 
      
     public double getPx(){
@@ -91,12 +95,12 @@ public abstract class Noeud {
     
     
     public void demandePx(){
-        System.out.println(" quelle est la coordonnée px ?");
+        System.out.println(" Quelle est la coordonnée px ?");
        double pX=Lire.d();  
         this.px=pX  ;
     }
     public void demandePy(){
-        System.out.println(" quelle est la coordonnée py ?");
+        System.out.println(" Quelle est la coordonnée py ?");
         double pY=Lire.d();
         this.py=pY;
     }
@@ -104,14 +108,15 @@ public abstract class Noeud {
     public abstract Group dessine();
     
     public int nbrInconnues(){
-        if ( this instanceof NoeudAppuiSimple){
+        if (this instanceof NoeudAppuiSimple){
             return 1;
         }
         else if (this instanceof NoeudAppuiDouble){
             return 2;
         }
-        else 
+        else{
             return 0;
+        }
     }
 
     /**
@@ -171,14 +176,14 @@ public abstract class Noeud {
      * @return the color
      */
     public Color getColor() {
-        return color;
+        return couleur;
     }
 
     /**
      * @param color the color to set
      */
     public void setColor(Color color) {
-        this.color = color;
+        this.couleur = color;
     }
 }
                

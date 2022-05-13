@@ -36,12 +36,6 @@ public class Barre {
         this(-1, debut, fin, 0, 0, 0);
         
     } 
-    
-    /*public static Barre NoeudOppose(Barre b, Noeud n){
-        Noeud noeudD, noeudF;
-        b = new Barre(noeudD, noeudF);
-    }*/
-    
 ////    Méthode qui renvoie le noeud opposé au noeud entré
    public Noeud noeudOppose (Noeud n) {
        Noeud oppose;
