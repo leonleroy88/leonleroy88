@@ -32,7 +32,7 @@ public class Dessin extends Pane{
         this.setClip(clip);
         this.main = main;
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
-      this.setOnMouseClicked((t) -> {
+        this.setOnMouseClicked((t) -> {
             this.main.getControleur().clicDansDessin(t);
             this.redrawAll();
         });

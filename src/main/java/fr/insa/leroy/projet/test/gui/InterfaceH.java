@@ -35,6 +35,7 @@ public class InterfaceH extends HBox {
     private File fichierCourant;
     private Treillis treillis;
     private MainPanel vue;
+    private BoutonIcone leon;
 
     public InterfaceH() {
         this.fichier = new Menu("Fichier");
@@ -72,13 +73,19 @@ public class InterfaceH extends HBox {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("A propos");
             alert.setHeaderText("Projet Treillis - Informatique S2");
-            alert.setContentText("Projet réalisé par Ana & Allan & Léon ");
+            alert.setContentText("Projet réalisé par Allan & Léon ");
             alert.showAndWait();
         });
 
         this.setSpacing(15);
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
-        this.getChildren().addAll(this.supprime, this.help);
+        //this.bTranslateDroite = new BoutonIcone("icones/droite.png",32,32);
+        this.leon = new BoutonIcone("icones/okkk.PNG",32,32);
+        this.leon.setOnAction((t) -> {
+            System.out.println("ICONES");
+        });
+        
+        this.getChildren().addAll(this.supprime, this.help,this.leon);
 
         // coucou les loulous
     }
