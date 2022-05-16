@@ -37,43 +37,42 @@ public class InterfaceL extends VBox {
     public InterfaceL(MainPanel panel) {
         this.main = panel;
         this.noeudPrecedent = null;
-        this.texte = new Text("Noeud Simple :");
+        this.texte = new Text("Les Noeuds :");
         texte.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
         texte.setTextAlignment(TextAlignment.CENTER);
         this.getChildren().add(this.texte);
 
-        this.noeudsimple = new BoutonIcone("icones/NoeudS.PNG",32,32);
+        this.noeudsimple = new BoutonIcone("icones/NoeudS.PNG", 32, 32);
         this.noeudsimple.setOnAction((t) -> {
             System.out.println("Noeud Simple");
             this.main.getControleur().ChangerEtat(Controleur.Etat.NOEUD);
-           
+
         });
         this.getChildren().add(this.noeudsimple);
-        
-        this.noeudDou = new BoutonIcone("icones/Noeud Simple.PNG",32,32);
-        this.noeudDou.setOnAction((t) -> {  
+
+        this.noeudDou = new BoutonIcone("icones/Noeud Simple.PNG", 32, 32);
+        this.noeudDou.setOnAction((t) -> {
         });
         this.getChildren().add(this.noeudDou);
-        
-        this.noeudADouble = new BoutonIcone("icones/NoeudDouble.PNG",32,32);
+
+        this.noeudADouble = new BoutonIcone("icones/NoeudDouble.PNG", 32, 32);
         this.getChildren().add(this.noeudADouble);
-        
+
         this.Tas = new Text("Barre :");
         Tas.setFont(Font.font("ARIAL", FontWeight.THIN, 12));
         Tas.setTextAlignment(TextAlignment.CENTER);
-        
 
         this.bBarre = new RadioButton("Barre");
         this.bBarre.setOnAction((t) -> {
             System.out.println("Barre");
-         this.main.getControleur().ChangerEtat(Controleur.Etat.BARRE1);
-               
+            this.main.getControleur().ChangerEtat(Controleur.Etat.BARRE1);
+
         });
         //ToggleGroup gBoutons = new ToggleGroup();
         //this.noeudsimple.setToggleGroup(gBoutons);
         //this.noeudDou.setToggleGroup(gBoutons);
-       // this.bBarre.setToggleGroup(gBoutons);
-      //  this.bBarre.setSelected(true);
+        // this.bBarre.setToggleGroup(gBoutons);
+        //  this.bBarre.setSelected(true);
 
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
         this.setSpacing(10);

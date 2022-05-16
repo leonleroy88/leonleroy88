@@ -30,7 +30,7 @@ public class InterfaceH extends HBox {
     private Menu fichier;
     private Button supprime;
     private Menu aide;
-    private Button help;
+    private BoutonIcone help;
     private MenuItem sauvegarder, ouvrir, nouveau, enregistrer;
     private File fichierCourant;
     private Treillis treillis;
@@ -68,7 +68,7 @@ public class InterfaceH extends HBox {
 
         });
 
-        this.help = new Button("A propos");
+        this.help = new BoutonIcone("icones/apropos.PNG",60,20);
         this.help.setOnAction((t) -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("A propos");
@@ -80,12 +80,9 @@ public class InterfaceH extends HBox {
         this.setSpacing(15);
         FxUtils.setSimpleBorder(this, Color.BLUEVIOLET, 1);
         //this.bTranslateDroite = new BoutonIcone("icones/droite.png",32,32);
-        this.leon = new BoutonIcone("icones/allan.PNG",40,40);
-        this.leon.setOnAction((t) -> {
-            System.out.println("ICONES");
-        });
+       
         
-        this.getChildren().addAll(this.supprime, this.help,this.leon);
+        this.getChildren().addAll(this.supprime, this.help);
 
         // coucou les loulous
     }
