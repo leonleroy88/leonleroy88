@@ -40,7 +40,7 @@ public class Barre {
    public Noeud noeudOppose (Noeud n) {
        Noeud oppose;
        if (n!=this.noeudArrivee && n!=this.getNoeudDebut()){
-           throw new Error ("Le noeud entré ne correspond pas à la bare entrée");
+           throw new Error ("Le noeud entré ne correspond pas à la barre entrée");
        }
        if (n==this.noeudArrivee){
            oppose=this.noeudDebut;
@@ -111,7 +111,7 @@ public class Barre {
   
    @Override
      public String toString(){
-       return "Ta barre : [id : "+this.identificateur +" debut:"+this.noeudDebut+" fin:"+this.noeudArrivee;
+       return "Barre"+ this.identificateur+" : [id : "+this.identificateur +" debut:"+this.noeudDebut+" fin:"+this.noeudArrivee;
     }
 
     /**

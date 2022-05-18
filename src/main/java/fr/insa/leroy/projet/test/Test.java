@@ -21,10 +21,10 @@ public class Test {
    
     Treillis t = new Treillis();
     t = Treillis.treillisTest();
-    ArrayList<Barre> barrreQuiCasse = new ArrayList();
-    barrreQuiCasse = t.barresCassees();
-        System.out.println(barrreQuiCasse.get(0));
-        
-   
+    ArrayList<Barre> barreQuiCasse = new ArrayList(); 
+    barreQuiCasse = t.creaMatrice();
+    for (int i=0;i<barreQuiCasse.size();i++){
+        System.out.println(barreQuiCasse.get(i));
+    }
 }
 }

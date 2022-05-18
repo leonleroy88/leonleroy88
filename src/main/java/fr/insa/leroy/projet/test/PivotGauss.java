@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package fr.insa.leroy.projet.test.calcul;
+package fr.insa.leroy.projet.test;
 
-/**
- *
- * @author Elève
- */
-public class Matrix {
+
+public class PivotGauss {
     
-    static void affichageVecteur(double [] t) { /*on crée une fonction pour afficher les vecteurs avec 1 à 3 chiffres près */
+  static void affichageVecteur(double [] t) { /*on crée une fonction pour afficher les vecteurs avec 1 à 3 chiffres près */
     for ( int i = 0 ; i < t.length ; i++ ) {
       System.out.printf("%3.1f\n",t[i]); }
   }

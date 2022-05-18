@@ -4,8 +4,9 @@
  */
 package fr.insa.leroy.projet.test;
 
-import fr.insa.leroy.projet.test.calcul.Matrix;
+import Jama.Matrix;
 import java.io.BufferedWriter;
+import static java.lang.Math.abs;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import java.util.ArrayList;
@@ -45,22 +46,39 @@ public class Treillis {
     }
 
     //Methodes    
+//    public static Treillis treillisTest() {
+//        Treillis test;
+//        test = new Treillis();
+//        NoeudAppuiDouble n1 = new NoeudAppuiDouble(1,200,0,new Vecteur2D(0, 0));
+//        NoeudSimple n2 = new NoeudSimple(2,100,100,new Vecteur2D(0, -1000));
+//        NoeudAppuiSimple n3 = new NoeudAppuiSimple(3,0,0,new Vecteur2D(0, 0),0);
+//        Barre b1 = new Barre(0, n2, n3, 0, 0, 0);
+//        Barre b2 = new Barre(1, n2, n1, 0, 0, 0);
+//        Barre b3 = new Barre(2, n3, n1, 0, 0, 0);
+//        test.ajouteBarre(b1);
+//        test.ajouteBarre(b2);
+//        test.ajouteBarre(b3);
+//        test.ajouteNoeud(n1);
+//        test.ajouteNoeud(n2);
+//        test.ajouteNoeud(n3);
+//        return test;
+//    }
     public static Treillis treillisTest() {
-        Treillis test;
-        test = new Treillis();
-        NoeudAppuiDouble n1 = new NoeudAppuiDouble(1,200,0,new Vecteur2D(0, 0));
-        NoeudSimple n2 = new NoeudSimple(2,100,100,new Vecteur2D(0, -1000));
-        NoeudAppuiSimple n3 = new NoeudAppuiSimple(3,0,0,new Vecteur2D(0, 0),0);
-        Barre b1 = new Barre(0, n2, n3, 0, 0, 0);
-        Barre b2 = new Barre(1, n2, n1, 0, 0, 0);
-        Barre b3 = new Barre(2, n3, n1, 0, 0, 0);
-        test.ajouteBarre(b1);
-        test.ajouteBarre(b2);
-        test.ajouteBarre(b3);
-        test.ajouteNoeud(n1);
-        test.ajouteNoeud(n2);
-        test.ajouteNoeud(n3);
-        return test;
+        Treillis res;
+        res = new Treillis();
+        NoeudAppuiDouble n0 = new NoeudAppuiDouble(0, 0, 200, new Vecteur2D(0, 0));
+        NoeudSimple n2 = new NoeudSimple(2, 100, 100, new Vecteur2D(0, -1000));
+        NoeudAppuiSimple n1 = new NoeudAppuiSimple(1, 0, 0, new Vecteur2D(0, 0), 0);
+        Barre b0 = new Barre(0, n0, n2, 3000, 3000, 0);
+        Barre b1 = new Barre(1, n2, n1, 3000, 400, 0);
+        Barre b2 = new Barre(2, n0, n1, 250, 550, 0);
+        res.ajouteBarre(b0);
+        res.ajouteBarre(b1);
+        res.ajouteBarre(b2);
+        res.ajouteNoeud(n0);
+        res.ajouteNoeud(n1);
+        res.ajouteNoeud(n2);
+        return res;
     }
 
     public  int maxIdNoeud() {
@@ -123,7 +141,7 @@ public class Treillis {
         }
     }
 
-    public  ArrayList<Barre> barresCassees() {
+    public  ArrayList<Barre> creaMatrice() {
         //Création de la matrice des equations
         // dimention inconnues horizontal nbr var et bertical nbrvar+1
         int nombreequation;
@@ -162,7 +180,6 @@ public class Treillis {
             System.out.print(Inconnues.get(i)+" ");
         }
         System.out.println(" ");
-
         //Creation de la matrice à résoudre A et du vecteur colonne B dans AX=B
         //Remplissage Réactions
         double[] B=new double[this.noeuds.size() * 2];
@@ -215,47 +232,37 @@ public class Treillis {
         }
         //Resolution de la matrice
         if (this.noeuds.size() * 2 != nombreequation){
-              throw new Error("Le système n'est pas soluble");
+              throw new Error("Le système n'est pas soluble (la matrice n'est pas carrée)");
+        }
+        Matrix m=new Matrix(this.noeuds.size() * 2 , nombreequation);
+        for (int i = 0; i < this.noeuds.size() * 2; i++) {
+            for (int j = 0; j < nombreequation; j++) {
+                m.set(i, j, Equation[i][j]);
+            }
+        }
+        if(m.det()==0){
+             throw new Error("Le système n'est pas soluble (le determinant est nul");
         }
         
-//        Determinant d= new Determinant(Equation,Equation.length);
-//        double[][]inverse=transpose(d.inverse(Equation));
-//        double[][] inverse=inverse(Equation);
         double[] v;
-        v = Matrix.inverse(Equation, B);
-        for(int k=0;k<nombreequation;k++){
-            for(int l=0;l<nombreequation;l++){
-//                System.out.print(inverse[k][l]+"   ");
-            }
-            System.out.print(" ");
-        }
-        for(int k=0;k<nombreequation;k++){
-            for(int l=0;l<nombreequation;l++){
-//                v[k]=v[k]+inverse[k][l]*B[k];
-            }
-        }
-
-        double[][]produit=new double[nombreequation][nombreequation];
-        for(int i=0; i<nombreequation; i++){
-            for(int j=0; j<nombreequation; j++){
-            produit[i][j] = 0;    
-                for(int k=0; k<2 ;k++) {  
-//                    produit[i][j] += Equation[i][k] * inverse[k][j];    
-                }
-//            System.out.print(produit[i][j]+" ");
-            }
-            System.out.println();
-        }  
+        v = PivotGauss.inverse(Equation, B);
         
         for (int in = 0; in < v.length; in++) {
             System.out.println(Inconnues.get(in)+" "+v[in]);
         }
-        //TODO gérer si c'est une compression ou une traction
-        //Trouver les barres qui risquent de casser
+
+           
+        
         ArrayList<Barre> fragile = new ArrayList();
         for (int k = 0; k < this.barres.size(); k++) {
-            if (v[k] > this.barres.get(k).getCompression()) {
-                fragile.add(this.barres.get(k));
+            if(v[k]>=0){
+                if (v[k] > this.barres.get(k).getCompression()) {
+                    fragile.add(this.barres.get(k));
+                }
+            }else{
+                if (abs(v[k]) > this.barres.get(k).getTraction()) {
+                    fragile.add(this.barres.get(k));
+                }
             }
         }
         return fragile;
@@ -285,15 +292,6 @@ public class Treillis {
         } else {
             return i;
         }
-    }
-    public static double[][] transpose (double[][] m){
-        double[][] transpose=new double[m.length][m[1].length];
-        for(int i=0;i<3;i++){    
-            for(int j=0;j<3;j++){    
-                transpose[i][j]=m[j][i];  
-            }    
-        }
-        return transpose;
     }
     public Group dessine() {
         Group g = new Group();
