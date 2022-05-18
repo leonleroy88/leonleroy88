@@ -4,6 +4,8 @@
  */
 package fr.insa.leroy.projet.test;
 
+import java.io.IOException;
+import java.io.Writer;
 import static java.lang.Math.atan;
 import java.util.List;
 import javafx.scene.Group;
@@ -156,5 +158,9 @@ public class Barre {
     public void setCOut(double cout){
         this.cout = cout;
     }
+    void save(Writer w) throws IOException {
+        w.append("Barre;" + getIdentificateur()+ ";" + getNoeudDebut().getId() + ";" + getNoeudArrivee().getId() + "\n");
+    }
+
 }
     

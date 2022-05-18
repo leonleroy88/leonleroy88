@@ -4,6 +4,8 @@
  */
 package fr.insa.leroy.projet.test;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -185,5 +187,6 @@ public abstract class Noeud {
     public void setColor(Color color) {
         this.couleur = color;
     }
+    public abstract void save(Writer w) throws IOException;
 }
                

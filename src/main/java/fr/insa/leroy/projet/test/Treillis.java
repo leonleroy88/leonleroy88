@@ -6,10 +6,13 @@ package fr.insa.leroy.projet.test;
 
 import Jama.Matrix;
 import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.Writer;
 import static java.lang.Math.abs;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javafx.scene.Group;
 
@@ -332,4 +335,22 @@ public class Treillis {
             }
         }
     }
+     public void save(Writer w) throws IOException {
+
+        for (Noeud noeud : this.noeuds) {
+            noeud.save(w);
+        }
+        w.append("FINNOEUDS\n");
+
+        for (Barre barre : this.barres) {
+            barre.save(w);
+        }
+        w.append("FINBARRES\n");
+
+    }
+
+    
+    
+    
+    
 }

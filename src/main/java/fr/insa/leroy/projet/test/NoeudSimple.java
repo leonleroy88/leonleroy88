@@ -4,8 +4,11 @@
  */
 package fr.insa.leroy.projet.test;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 
 /**
@@ -31,10 +34,13 @@ public class NoeudSimple extends Noeud {
     @Override
     public Group dessine() {
         Ellipse rep = new Ellipse(this.getPx(), this.getPy(), 5, 5);
+        rep.setStroke(Color.RED);
         Group l = new Group(rep);
         return l;
     }
-
+public void save(Writer w) throws IOException {
+        w.append("NoeudSimple;" + getId() + ";" + "(" + this.px + "," + this.py + ")\n");
+    }
 
     
 }

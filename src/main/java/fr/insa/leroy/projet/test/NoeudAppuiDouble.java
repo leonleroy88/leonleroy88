@@ -4,8 +4,11 @@
  */
 package fr.insa.leroy.projet.test;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -29,11 +32,13 @@ public class NoeudAppuiDouble extends NoeudAppui {
     
     public Group dessine() {
          Rectangle rep = new Rectangle(this.getPx(), this.getPy(), 8, 8);
+         rep.setStroke(Color.BLUE);
          Group l = new Group(rep);
-         return l;
-            
+         return l;    
      }
-
+ public void save(Writer w) throws IOException {
+        w.append("NoeudSimple;" + getId() + ";" + "(" + this.px + "," + this.py + ")\n");
+    }
    
 
       

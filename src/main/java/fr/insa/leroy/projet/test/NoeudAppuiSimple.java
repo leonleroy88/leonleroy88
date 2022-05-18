@@ -4,8 +4,11 @@
  */
 package fr.insa.leroy.projet.test;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 
 /**
@@ -35,6 +38,7 @@ public class  NoeudAppuiSimple extends NoeudAppui {
     @Override
     public Group dessine() {
         Ellipse rep = new Ellipse(this.getPx(), this.getPy(), 5, 8);
+        rep.setStroke(Color.RED);
          Group l = new Group(rep);
          return l;
        }
@@ -52,7 +56,9 @@ public class  NoeudAppuiSimple extends NoeudAppui {
     public void setNormale(double normale) {
         this.normale = normale;
     }
-
+public void save(Writer w) throws IOException {
+        w.append("NoeudSimple;" + getId() + ";" + "(" + this.px + "," + this.py + ")\n");
+    }
 
     
 }

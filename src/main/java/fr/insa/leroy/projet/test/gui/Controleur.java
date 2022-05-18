@@ -6,6 +6,8 @@ package fr.insa.leroy.projet.test.gui;
 
 import fr.insa.leroy.projet.test.Barre;
 import fr.insa.leroy.projet.test.Noeud;
+import fr.insa.leroy.projet.test.NoeudAppui;
+import fr.insa.leroy.projet.test.NoeudSimple;
 import java.util.Optional;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -17,7 +19,7 @@ import javafx.scene.paint.Color;
 public class Controleur {
     private MainPanel main;
     private Noeud noeudSelect;
-    public enum Etat { SELECT, NOEUD, BARRE1, BARRE2 }
+    public enum Etat { SELECT, NOEUD, BARRE1, BARRE2, NOEUDDOUBLE }
     
     private Etat etat;
     
@@ -30,7 +32,7 @@ public class Controleur {
         Noeud n;
         switch (this.etat) {
             case NOEUD:
-              //  n = new NoeudSimplet.(t.getX(), t.getY());
+              //  n = new NoeudSimple.(t.getX(), t.getY());
                 n = this.main.getModel().noeudPlusProche(t.getX(), t.getY(), 5);
                 boolean creerNoeud = n==null;
                 NoeudDialog dialog = new NoeudDialog(n, t);
@@ -47,6 +49,22 @@ public class Controleur {
                     //this.ChangerEtat(Etat.SELECT);
                 }
                 break;
+            case NOEUDDOUBLE:
+                n = this.main.getModel().noeudPlusProche(t.getX(), t.getY(), 5);
+                boolean creerNoeud1 = n==null;
+                NoeudDialog dialoge = new NoeudDialog(n, t);
+                Optional<Noeud> p2 = dialoge.showAndWait();
+                if (p2.isPresent()){
+                    if (creerNoeud1) {
+                        n = p2.get();
+                        this.main.getModel().ajouteNoeud(n);
+                    } else {
+                        n.setPx(p2.get().getPx());
+                        n.setPy(p2.get().getPy());
+                        n.setForce(p2.get().getForce());
+                    }
+                    //this.ChangerEtat(Etat.SELECT);
+                }
             case SELECT:
                 n = this.main.getModel().noeudPlusProche(t.getX(), t.getY(), 5);
                 if (n != null){
@@ -95,6 +113,10 @@ public class Controleur {
             case NOEUD:
                 this.etat = nouvelEtat;
                 this.main.getoutilsLeft().getNoeudsimple();//setSelected(true)
+                break;
+            case NOEUDDOUBLE:
+                this.etat = nouvelEtat;
+                this.main.getoutilsLeft().getNoeudADouble();
                 break;
             case BARRE1:
                 this.etat = nouvelEtat;

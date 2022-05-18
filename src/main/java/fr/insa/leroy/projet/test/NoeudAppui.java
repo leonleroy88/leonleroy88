@@ -6,6 +6,7 @@ package fr.insa.leroy.projet.test;
 
 import java.util.ArrayList;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 
 /**
@@ -26,6 +27,7 @@ public abstract class NoeudAppui extends Noeud {
     }     
      public Group dessine() {
         Ellipse rep = new Ellipse(this.getPx(), this.getPy(), 5, 8);
+        rep.setStroke(Color.RED);
          Group l = new Group(rep);
          return l;
        }

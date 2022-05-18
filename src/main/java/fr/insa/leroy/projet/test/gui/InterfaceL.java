@@ -58,6 +58,9 @@ public class InterfaceL extends VBox {
         this.getChildren().add(this.noeudDou);
 
         this.noeudADouble = new BoutonIcone("icones/NoeudDouble.PNG", 32, 32);
+        this.noeudADouble.setOnAction((t) -> {
+             this.main.getControleur().ChangerEtat(Controleur.Etat.NOEUDDOUBLE);
+        });
         this.getChildren().add(this.noeudADouble);
 
         this.Tas = new Text("Barre :");
@@ -122,6 +125,27 @@ public class InterfaceL extends VBox {
      */
     public Noeud getNoeudPrecedent() {
         return noeudPrecedent;
+    }
+
+    /**
+     * @return the noeudADouble
+     */
+    public BoutonIcone getNoeudADouble() {
+        return noeudADouble;
+    }
+
+    /**
+     * @return the main
+     */
+    public MainPanel getMain() {
+        return main;
+    }
+
+    /**
+     * @param main the main to set
+     */
+    public void setMain(MainPanel main) {
+        this.main = main;
     }
 
 }
