@@ -5,7 +5,9 @@
 package fr.insa.leroy.projet.test;
 
 import static java.lang.Math.atan;
+import java.util.List;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 /**
@@ -62,8 +64,13 @@ public class Barre {
         return angle;
     }    
     
-    public Group dessine(){
+    public Group dessine(List<Barre> problemes){
         Line res = new Line(this.getNoeudDebut().getPx(), this.getNoeudDebut().getPy(), this.getNoeudArrivee().getPx(), this.getNoeudArrivee().getPy());
+        if (problemes.contains(this)) {
+            res.setStroke(Color.RED);
+        } else  {
+            res.setStroke(Color.BLACK);
+        }
         Group g = new Group(res);
         return g;
     }

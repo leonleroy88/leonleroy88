@@ -293,13 +293,13 @@ public class Treillis {
             return i;
         }
     }
-    public Group dessine() {
+    public Group dessine(List<Barre> problemes) {
         Group g = new Group();
         for (int i=0; i < this.noeuds.size(); i++) {
             g.getChildren().add(this.noeuds.get(i).dessine());
         }
         for (int i=0; i < this.barres.size(); i++) {
-            g.getChildren().add(this.barres.get(i).dessine());
+            g.getChildren().add(this.barres.get(i).dessine(problemes));
         }
         return g;
     }

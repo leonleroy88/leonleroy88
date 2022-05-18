@@ -52,6 +52,8 @@ public class InterfaceL extends VBox {
 
         this.noeudDou = new BoutonIcone("icones/Noeud Simple.PNG", 32, 32);
         this.noeudDou.setOnAction((t) -> {
+            System.out.println("Noued appui simple");
+            this.main.getControleur().ChangerEtat(Controleur.Etat.NOEUD);
         });
         this.getChildren().add(this.noeudDou);
 

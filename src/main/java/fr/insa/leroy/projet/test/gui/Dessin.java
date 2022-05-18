@@ -41,15 +41,8 @@ public class Dessin extends Pane{
     
     public void redrawAll() {
         this.getChildren().clear();
-        this.getChildren().add(this.main.getModel().dessine());
-        
-        
-   
-        
-       
-       
-    
-    
+        this.getChildren().add(this.main.getModel().dessine(this.main.getBarreProbleme()));
+ 
 }
 }
     

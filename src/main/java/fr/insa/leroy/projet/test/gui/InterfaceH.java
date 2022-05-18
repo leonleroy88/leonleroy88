@@ -92,12 +92,19 @@ public class InterfaceH extends HBox {
         File f = chooser.showSaveDialog(this.stage);
         if (f != null) {
             save(f);
+            System.out.println("Save as");
+            
         }
     }
 
     private void save(File f) {
         try (BufferedWriter bout = new BufferedWriter(new FileWriter(f))) {
-            treillis.save(bout);
+           // treillis.save(bout);
+            bout.write("toto");
+            bout.newLine();
+            bout.write("titit");
+            bout.close();
+            System.out.println("save ");
             this.fichierCourant = f;
         } catch (IOException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -107,6 +114,7 @@ public class InterfaceH extends HBox {
             alert.showAndWait();
         }
     }
+    
  
     
 }

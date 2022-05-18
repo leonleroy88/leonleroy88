@@ -17,8 +17,7 @@ public class Test {
     Vecteur2D v1;
     Noeud n1;
     Vecteur2D fce = new Vecteur2D(0,0);*/
-    
-   
+
     Treillis t = new Treillis();
     t = Treillis.treillisTest();
     ArrayList<Barre> barreQuiCasse = new ArrayList(); 
