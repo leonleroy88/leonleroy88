@@ -25,6 +25,12 @@ public class NoeudSimple extends Noeud {
         this.py=PY;
     }
       
+//    public NoeudSimple(double PX, double PY){
+//        super(PX,PY);
+//        this.px=PX;
+//        this.py=PY;
+//       
+//    }
     @Override
     public String toString(){
        return "Noeud Simple : [id : "+this.getId() +" px:"+this.px+" py:"+this.py+" force:"+this.getForce().toString() ;

@@ -32,7 +32,7 @@ public class Controleur {
         Noeud n;
         switch (this.etat) {
             case NOEUD:
-              //  n = new NoeudSimple.(t.getX(), t.getY());
+              //n = new NoeudSimple.(t.getX(), t.getY());
                 n = this.main.getModel().noeudPlusProche(t.getX(), t.getY(), 5);
                 boolean creerNoeud = n==null;
                 NoeudDialog dialog = new NoeudDialog(n, t);

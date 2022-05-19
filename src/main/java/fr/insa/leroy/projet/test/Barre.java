@@ -71,7 +71,7 @@ public class Barre {
         if (problemes.contains(this)) {
             res.setStroke(Color.RED);
         } else  {
-            res.setStroke(Color.BLACK);
+            res.setStroke(Color.GREEN);
         }
         Group g = new Group(res);
         return g;
