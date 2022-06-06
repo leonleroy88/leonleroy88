@@ -96,6 +96,8 @@ public class Controleur {
                     this.main.getModel().ajouteBarre(new Barre(this.noeudSelect, n));
                     this.noeudSelect.setColor(Color.BLUE);
                     this.noeudSelect = null;
+                     DialogBarre dialog3 = new DialogBarre(t);
+                     Optional<Barre> p1 = dialog3.showAndWait();
                     this.ChangerEtat(Etat.SELECT);
                 }
                 break;

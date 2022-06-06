@@ -99,7 +99,7 @@ public class InterfaceH extends HBox {
 
     private void save(File f) {
         try (BufferedWriter bout = new BufferedWriter(new FileWriter(f))) {
-            treillis.save(bout);
+          //  treillis.save(bout);
             bout.write("toto");
             bout.newLine();
             bout.write("titit");

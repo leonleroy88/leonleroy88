@@ -67,8 +67,7 @@ public class Treillis {
 //        return test;
 //    }
     public static Treillis treillisTest() {
-        Treillis res;
-        res = new Treillis();
+        Treillis res = new Treillis();
         NoeudAppuiDouble n0 = new NoeudAppuiDouble(0, 0, 200, new Vecteur2D(0, 0));
         NoeudSimple n2 = new NoeudSimple(2, 100, 100, new Vecteur2D(0, -1000));
         NoeudAppuiSimple n1 = new NoeudAppuiSimple(1, 0, 0, new Vecteur2D(0, 0), 0);
@@ -84,7 +83,7 @@ public class Treillis {
         return res;
     }
 
-    public  int maxIdNoeud() {
+    public int maxIdNoeud() {
         int max = 0;
         if (!this.noeuds.isEmpty()) {
             for (int i = 0; i < this.noeuds.size(); i++) {
@@ -96,11 +95,11 @@ public class Treillis {
         return max;
     }
 
-    public  int maxIdBarre() {
+    public int maxIdBarre() {
         int max = 0;
         if (!this.barres.isEmpty()) {
             for (int i = 0; i < this.barres.size(); i++) {
-                if (this.barres.get(i).getIdentificateur()>= max) {
+                if (this.barres.get(i).getIdentificateur() >= max) {
                     max = this.barres.get(i).getIdentificateur();
                 }
             }
@@ -126,7 +125,7 @@ public class Treillis {
         }
     }
 
-    public  void ajouteBarre(Barre b) {
+    public void ajouteBarre(Barre b) {
         int i = 0;
         if (this.barres.isEmpty()) {
             b.setIdentificateur(0);
@@ -144,7 +143,7 @@ public class Treillis {
         }
     }
 
-    public  ArrayList<Barre> creaMatrice() {
+    public ArrayList<Barre> creaMatrice() {
         //Création de la matrice des equations
         // dimention inconnues horizontal nbr var et bertical nbrvar+1
         int nombreequation;
@@ -180,12 +179,12 @@ public class Treillis {
 
         //Afficher les inconnues
         for (int i = 0; i < Inconnues.size(); i++) {
-            System.out.print(Inconnues.get(i)+" ");
+            System.out.print(Inconnues.get(i) + " ");
         }
         System.out.println(" ");
         //Creation de la matrice à résoudre A et du vecteur colonne B dans AX=B
         //Remplissage Réactions
-        double[] B=new double[this.noeuds.size() * 2];
+        double[] B = new double[this.noeuds.size() * 2];
         int lig = 0;
         for (int i = 0; i < this.noeuds.size(); i++) {
             Noeud n = this.noeuds.get(i);
@@ -198,7 +197,7 @@ public class Treillis {
                 } else {
                     int num = this.numVar(Inconnues, n);
                     NoeudAppuiSimple ns = (NoeudAppuiSimple) n;
-                    double angle=ns.getNormale();
+                    double angle = ns.getNormale();
                     Equation[lig][num] = cos(angle);
                     Equation[lig + 1][num] = sin(angle);
                 }
@@ -231,38 +230,36 @@ public class Treillis {
             System.out.println(" ");
         }
         for (int j = 0; j < nombreequation; j++) {
-                System.out.print(B[j] + " | ");
+            System.out.print(B[j] + " | ");
         }
         //Resolution de la matrice
-        if (this.noeuds.size() * 2 != nombreequation){
-              throw new Error("Le système n'est pas soluble (la matrice n'est pas carrée)");
+        if (this.noeuds.size() * 2 != nombreequation) {
+            throw new Error("Le système n'est pas soluble (la matrice n'est pas carrée)");
         }
-        Matrix m=new Matrix(this.noeuds.size() * 2 , nombreequation);
+        Matrix m = new Matrix(this.noeuds.size() * 2, nombreequation);
         for (int i = 0; i < this.noeuds.size() * 2; i++) {
             for (int j = 0; j < nombreequation; j++) {
                 m.set(i, j, Equation[i][j]);
             }
         }
-        if(m.det()==0){
-             throw new Error("Le système n'est pas soluble (le determinant est nul");
-        }
-        
-        double[] v;
-        v = PivotGauss.inverse(Equation, B);
-        
-        for (int in = 0; in < v.length; in++) {
-            System.out.println(Inconnues.get(in)+" "+v[in]);
+        if (m.det() == 0) {
+            throw new Error("Le système n'est pas soluble (le determinant est nul");
         }
 
-           
-        
+        double[] v;
+        v = PivotGauss.inverse(Equation, B);
+
+        for (int in = 0; in < v.length; in++) {
+            System.out.println(Inconnues.get(in) + " " + v[in]);
+        }
+
         ArrayList<Barre> fragile = new ArrayList();
         for (int k = 0; k < this.barres.size(); k++) {
-            if(v[k]>=0){
+            if (v[k] >= 0) {
                 if (v[k] > this.barres.get(k).getCompression()) {
                     fragile.add(this.barres.get(k));
                 }
-            }else{
+            } else {
                 if (abs(v[k]) > this.barres.get(k).getTraction()) {
                     fragile.add(this.barres.get(k));
                 }
@@ -296,12 +293,13 @@ public class Treillis {
             return i;
         }
     }
+
     public Group dessine(List<Barre> problemes) {
         Group g = new Group();
-        for (int i=0; i < this.noeuds.size(); i++) {
+        for (int i = 0; i < this.noeuds.size(); i++) {
             g.getChildren().add(this.noeuds.get(i).dessine());
         }
-        for (int i=0; i < this.barres.size(); i++) {
+        for (int i = 0; i < this.barres.size(); i++) {
             g.getChildren().add(this.barres.get(i).dessine(problemes));
         }
         return g;
@@ -314,28 +312,30 @@ public class Treillis {
     public void save(BufferedWriter bout) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     public Noeud noeudPlusProche(double x, double y, double distMax) {
-        if (this.noeuds.isEmpty())
+        if (this.noeuds.isEmpty()) {
             return null;
-        else {
+        } else {
             Noeud nmin = this.noeuds.get(0);
             double distmin = nmin.distance(x, y);
-            for (int i=1; i < this.noeuds.size(); i++){
+            for (int i = 1; i < this.noeuds.size(); i++) {
                 Noeud n = this.noeuds.get(i);
                 double dist = n.distance(x, y);
-                if (dist < distmin){
+                if (dist < distmin) {
                     distmin = dist;
                     nmin = n;
                 }
             }
-            if (distmin <= distMax){
+            if (distmin <= distMax) {
                 return nmin;
             } else {
                 return null;
             }
         }
     }
-     public void save(Writer w) throws IOException {
+
+    public void save(Writer w) throws IOException {
 
         for (Noeud noeud : this.noeuds) {
             noeud.save(w);
@@ -349,8 +349,4 @@ public class Treillis {
 
     }
 
-    
-    
-    
-    
 }

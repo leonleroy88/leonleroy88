@@ -46,8 +46,8 @@ public class MainPanel extends BorderPane {
        this.calculTout = new Button("calcul");
        this.calculTout.setOnAction((t) -> {
            //TODO
-//           this.barreProbleme = this.model.creaMatrice();
-this.barreProbleme.add(this.model.getBarres().get(0));
+//       this.barreProbleme = this.model.creaMatrice();
+           this.barreProbleme.add(this.model.getBarres().get(0));
            System.out.println(this.barreProbleme);
            this.dessin.redrawAll();
        });
